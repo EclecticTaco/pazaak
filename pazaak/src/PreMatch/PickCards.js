@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '../Cards/Card'
 import styles from './PickCards.module.css'
 
-function PickCards( {hand, setHand} ) {
+const PickCards = ( {hand, setHand} ) => {
+    const [sideDeck, setSideDeck] = useState([])
     const handleSubmit = () => {
-        setHand(hand.concat(1))
+        setHand(hand.concat(sideDeck))
     }
     return (
         <div className={styles.main}>
