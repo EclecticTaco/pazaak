@@ -8,9 +8,15 @@
                 * Player can remove cards from side deck
     2. Game logic
         * Game draws 4 from side deck into players hand
-        * player can end turn (draws a house card)
-        * player can stand (no further action)
-        * player can play card from hand (1 per turn)
+        * Player can end turn (draws a house card)
+        * Player can stand (no further action)
+        * Player can play card from hand (1 per turn)
+    3. Implement CPU Player
+        * Generate random hand for CPU
+        * CPU stands if 19 and no options to increase to 20
+        * CPU will always play card to increase card to 20
+        * Otherwise, keep recieving house cards
+        * If count is over 20, player minus card is avail
 
 ## Stretch Goals
     1. Limited pool of initial starting cards
