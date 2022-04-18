@@ -37,3 +37,18 @@ function PickCards( {hand, setHand} ) {
 }
 
 export default PickCards;
+
+/* 
+hand = 
+[ 
+    {
+        sign: '-',
+        val: 2
+    },
+    {
+        sign: '+',
+        val: 3
+    }
+
+]
+*/
