@@ -1,0 +1,17 @@
+.isNegative {
+    background-color:crimson;
+    border: 20px;
+    border-color: black;
+}
+
+.isPositive {
+    background-color:blue;
+    border: 20px;
+    border-color: black;
+}
+
+.house {
+    background-color: green;
+    border: 20px;
+    border-color: black;
+}
