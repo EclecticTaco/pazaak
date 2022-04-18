@@ -11,3 +11,7 @@
         * player can end turn (draws a house card)
         * player can stand (no further action)
         * player can play card from hand (1 per turn)
+
+## Stretch Goals
+    1. Limited pool of initial starting cards
+    2. Implement economy for player to purchase new cards
