@@ -1,6 +1,6 @@
 import styles from './Card.module.css';
 
-function Card({value, sign, house}) {
+function Card({value, sign, house, special}) {
     if (house) {
         return (
             <div className={styles.house}>
@@ -8,6 +8,15 @@ function Card({value, sign, house}) {
             </div>
         )
     }
+
+    if (special) {
+        return (
+            <div className={styles.isSpecial}>
+                {special.type} {value}
+            </div>
+        )
+    }
+
     if (!sign) {
         return (
             <div className={styles.isNegative}>
