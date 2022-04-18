@@ -1,7 +1,8 @@
 .isNegative {
     background-color:crimson;
     box-sizing: border-box;
-    width: 10%;
+    width: 150px;
+    height: 150px;
     border: solid black 5px;
     padding: 5px;
 }
@@ -9,7 +10,8 @@
 .isPositive {
     background-color: blue;
     box-sizing: border-box;
-    width: 10%;
+    width: 150px;
+    height: 150px;
     border: solid black 5px;
     padding: 5px;
 }
@@ -17,7 +19,8 @@
 .house {
     background-color: green;
     box-sizing: border-box;
-    width: 10%;
+    width: 150px;
+    height: 150px;
     border: solid black 5px;
     padding: 5px;
 }
@@ -25,7 +28,8 @@
 .isSpecial {
     background-color: gold;
     box-sizing: border-box;
-    width: 10%;
+    width: 150px;
+    height: 150px;
     border: solid black 5px;
     padding: 5px;
 }
