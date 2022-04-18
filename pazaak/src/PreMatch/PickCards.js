@@ -2,7 +2,10 @@ import React from 'react';
 import Card from '../Cards/Card'
 import styles from './PickCards.module.css'
 
-function PickCards() {
+function PickCards( {hand, setHand} ) {
+    const handleSubmit = () => {
+        setHand(hand.concat(1))
+    }
     return (
         <div className={styles.main}>
             <Card value={1} sign={1} />
@@ -25,6 +28,10 @@ function PickCards() {
             <Card value={4} special={{type:'+/-'}}/>
             <Card value={5} special={{type:'+/-'}}/>
             <Card value={6} special={{type:'+/-'}}/>
+
+            <button onClick={handleSubmit}>
+
+            </button>
         </div>
     )
 }
