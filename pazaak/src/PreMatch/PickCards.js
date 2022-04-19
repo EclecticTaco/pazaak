@@ -47,7 +47,7 @@ const PickCards = ( {hand, setHand} ) => {
 	}
 
     return (
-		<div>
+		<div className={styles.parent}>
 			<div className={styles.main}>
 				<Card value={1} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
 				<Card value={2} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
@@ -70,12 +70,12 @@ const PickCards = ( {hand, setHand} ) => {
 				<Card value={5} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
 				<Card value={6} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
 			</div>
-			<div>
+			<div className={styles.side}>
 				{sideDeck.map((card) => {
-					<Card value={card.val} sign={card.sign} />
+					return <Card value={card.val} sign={card.sign} handleAddToSideDeck={handleAddToSideDeck} />
 				})}
 			</div>
-			<div>
+			<div className={styles.parent}>
 				<button onClick={handleSetHand} className={styles.button}>
 					Play
 				</button>
