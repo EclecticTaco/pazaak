@@ -26,6 +26,7 @@
     * Move all state to Redux
     * Move even handlers to a enclosing DIV tag instead of on the Card component
     * Move num generator func to a utils folder
+    * Rename all params and values to be consistent across all components
 
 ## Stretch Goals
     1. Limited pool of initial starting cards
