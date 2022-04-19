@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import Card from '../Cards/Card'
 import styles from './PickCards.module.css'
 
-const PickCards = ( {hand, setHand} ) => {
-    const [sideDeck, setSideDeck] = useState([]);
+const PickCards = ({ hand, setHand }) => {
+	const [sideDeck, setSideDeck] = useState([]);
 	function getRandomInt(max) {
 		return Math.floor(Math.random() * max);
 	}
 
-    const handleSetHand = () => {
-        /* 
-        TODO: refactor all of this, need to store initial sideDeck without having to convert from arr to obj
-        */
-       if (sideDeck.length !== 10) {
-		   window.alert('Please Choose 10 cards')
-		   return;
-       }
+	const handleSetHand = () => {
+		/* 
+		TODO: refactor all of this, need to store initial sideDeck without having to convert from arr to obj
+		*/
+		if (sideDeck.length !== 10) {
+			window.alert('Please Choose 10 cards')
+			return;
+		}
 		const cardsObject = {};
 		for (let x = 0; x < sideDeck.length; x += 1) {
 			cardsObject[x] = sideDeck[x]
@@ -31,52 +31,49 @@ const PickCards = ( {hand, setHand} ) => {
 			}
 		}
 		setHand(hand.concat(tempHand))
-    }
+	}
 
-    const handleAddToSideDeck = (sign, val, special) => {
+	const handleAddToSideDeck = (sign, value, special) => {
 		if (sideDeck.length === 10) {
 			window.alert('You can only have 10 cards in your side deck')
 			return
 		}
-        const finalSign = (sign || special)
-        const cardToAdd = {
-            sign: finalSign,
-            val: val
-        }
-        setSideDeck(sideDeck.concat(cardToAdd))
-    }
-    const handleClearCards = () => {
+
+		const cardToAdd = {
+			sign: sign,
+			value: value,
+			special: special
+		}
+		setSideDeck(sideDeck.concat(cardToAdd))
+	}
+	const handleClearCards = () => {
 		setSideDeck([])
 	}
 
-    return (
+
+	return (
 		<div className={styles.parent}>
 			<div className={styles.main}>
-				{/* need to refactor */}
-				<Card value={1} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={2} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={3} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={4} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={5} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={6} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
-
-				<Card value={1} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={2} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={3} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={4} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={5} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={6} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
-
-				<Card value={1} sign={'+/-'} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={2} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={3} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={4} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={5} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={6} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
+				{/* render the main deck here */}
+				{
+					[...Array(6)].map((x, i) => {
+						return <Card value={i + 1} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
+					})
+				}
+				{
+					[...Array(6)].map((x, i) => {
+						return <Card value={i + 1} sign={1} handleAddToSideDeck={handleAddToSideDeck}/>
+					})
+				}
+				{
+					[...Array(6)].map((x, i) => {
+						return <Card value={i + 1} sign={3} special={1} handleAddToSideDeck={handleAddToSideDeck}/>
+					})
+				}
 			</div>
 			<div className={styles.side}>
 				{sideDeck.map((card) => {
-					return <Card value={card.val} sign={card.sign} handleAddToSideDeck={handleAddToSideDeck} />
+					return <Card value={card.value} sign={card.sign} special={card.special}/>
 				})}
 			</div>
 			<div className={styles.parent}>
@@ -89,7 +86,7 @@ const PickCards = ( {hand, setHand} ) => {
 			</div>
 		</div>
 
-    )
+	)
 }
 
 export default PickCards;

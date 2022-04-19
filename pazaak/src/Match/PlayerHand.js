@@ -9,14 +9,14 @@ const cardToAdd = {
         }
 */
 
-const PlayerHand = ({hand, setHand, count, setCount}) => {
+const PlayerHand = ({hand, setHand, count, setCount, match}) => {
     return (
         <div className={styles.playerHand}>
             {
                 hand.map((card) => {
                     return (
                         <div>
-                            <Card sign={card.sign} value={card.val} />
+                            <Card match={true} sign={card.sign} value={card.value} special={card.special}/>
                         </div> 
                     )
                 })
