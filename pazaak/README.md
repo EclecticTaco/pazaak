@@ -1,13 +1,13 @@
 # Todo:
 1. Create pre match window to pick a side deck
-    * User pick 10 cards
-    * Side deck saves 10 user picked cards
+    * ~~User pick 10 cards~~
+    * ~~Side deck saves 10 user picked cards~~
         Later:
             * Game asks if player wants to conntinue with this side deck
             * Player can select No
-            * Player can remove cards from side deck
+            * ~~Player can remove cards from side deck~~
 2. Game logic
-    * Game draws 4 from side deck into players hand
+    * ~~Game draws 4 from side deck into players hand~~
     * Player can end turn (draws a house card)
     * Player can stand (no further action)
     * Player can play card from hand (1 per turn)
