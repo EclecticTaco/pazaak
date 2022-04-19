@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PlayerHand from './PlayerHand';
 import Board from './Board';
+import HouseCard from '../Cards/HouseCard';
 /* 
     player has three choices
 
@@ -15,11 +16,30 @@ import Board from './Board';
         add house card value to current count
         update current count
         
+        board: array of card objs
+        [
+            {
+                value: x
+                sign: +
+            }
+        ]
 */
 const Match = ( {playerHand }) => {
+    function getRandomInt(max) { // moove all instances of this func to utils
+        return Math.floor(Math.random() * max);
+    }
+
+    const generateHouseCard = () => { 
+        const card = {
+            value: getRandomInt(11),
+            sign: '+'
+        }
+        return card;
+    }
     const [hand, setHand] = useState(playerHand);
     const [count, setCount] = useState(0);
-    const [board, setBoard] = useState([]);
+    const [board, setBoard] = useState([generateHouseCard()]);
+
     return (
         <div>
             <Board board={board} setBoard={setBoard}/>
