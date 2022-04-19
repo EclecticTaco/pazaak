@@ -43,7 +43,7 @@ const Match = ( {playerHand }) => {
     return (
         <div>
             <Board board={board} setBoard={setBoard}/>
-            <PlayerHand hand={hand} setHand={setHand} count={count} setCount={setCount}/>
+            <PlayerHand match={true} hand={hand} setHand={setHand} count={count} setCount={setCount}/>
         </div>
     )
 }

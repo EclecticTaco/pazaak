@@ -37,7 +37,20 @@ function Card({match, value,handleAddToSideDeck, sign, special }) {
             </div>
         )
     } else {
-
+        if (!special) {
+            return (
+                <div className={sign ? styles.isPositive : styles.isNegative}>
+                {signReference[sign]} {value}
+             </div>
+            )
+        } else {
+            return (
+                <div className={styles.isSpecial} >
+                {signReference[sign]} {value}
+             </div>
+            )
+        }
+        
     }
     
 }
