@@ -25,6 +25,7 @@
     * Refactor Card and PickCards to dynamically render instead of hardcoding and repeating
     * Move all state to Redux
     * Move even handlers to a enclosing DIV tag instead of on the Card component
+    * Move num generator func to a utils folder
 
 ## Stretch Goals
     1. Limited pool of initial starting cards
