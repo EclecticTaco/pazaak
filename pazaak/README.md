@@ -19,8 +19,8 @@
         * CPU stands if 19 and no cards in hand to increase to 20
         * CPU will always play card to increase card to 20
         * Otherwise, keep recieving house cards
-        * If count is over 20, player minus card is avail
-        
+        * If count is over 20, play minus card is avail
+
 ## Need to Refactor
     * Refactor Card and PickCards to dynamically render instead of hardcoding and repeating
 
