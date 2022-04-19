@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PlayerHand from './PlayerHand';
+import Board from './Board';
 /* 
     player has three choices
 
@@ -16,10 +17,14 @@ import PlayerHand from './PlayerHand';
         
 */
 const Match = ( {playerHand }) => {
-    const [hand, setHand] = useState(playerHand)
-    const [count, setCount] = useState(0)
+    const [hand, setHand] = useState(playerHand);
+    const [count, setCount] = useState(0);
+    const [board, setBoard] = useState([]);
     return (
-        <PlayerHand hand={hand} setHand={setHand} count={count} setCount={setCount}/>
+        <div>
+            <Board board={board} setBoard={setBoard}/>
+            <PlayerHand hand={hand} setHand={setHand} count={count} setCount={setCount}/>
+        </div>
     )
 }
 

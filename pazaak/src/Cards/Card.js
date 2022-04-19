@@ -1,7 +1,10 @@
 import styles from './Card.module.css';
 
 function Card({value, sign, house, special, handleAddToSideDeck }) {
-    // TODO: Refactor to one return statement 
+    /*
+    TODO: Refactor to one return statement
+    move onClick into a surrounding div tag 
+    */
     if (house) {
         return (
             <div className={styles.house} onClick={() => handleAddToSideDeck('+',value)}>

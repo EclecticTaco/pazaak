@@ -14,7 +14,11 @@ const PlayerHand = ({hand, setHand, count, setCount}) => {
         <div className={styles.playerHand}>
             {
                 hand.map((card) => {
-                    return <Card sign={card.sign} value={card.val} />
+                    return (
+                        <div>
+                            <Card sign={card.sign} value={card.val} />
+                        </div> 
+                    )
                 })
             }
         </div>
