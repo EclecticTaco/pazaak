@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/pazaak/static/css/main.e295b0bc.css",
+    "main.js": "/pazaak/static/js/main.49c986df.js",
+    "index.html": "/pazaak/index.html",
+    "main.e295b0bc.css.map": "/pazaak/static/css/main.e295b0bc.css.map",
+    "main.49c986df.js.map": "/pazaak/static/js/main.49c986df.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e295b0bc.css",
+    "static/js/main.49c986df.js"
+  ]
+}
