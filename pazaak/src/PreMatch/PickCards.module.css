@@ -12,3 +12,19 @@
     border: solid black 10px;
     padding: 5px;
 }
+
+.button {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 6;
+    align-content: center;
+    align-items: baseline;
+    gap: 10px;
+    box-sizing: content-box;
+    width: 45%;
+    height: 45%;
+    border: solid black 10px;
+    padding: 5px;
+}
+
