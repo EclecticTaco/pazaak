@@ -23,36 +23,20 @@ function Card({match, value,handleAddToSideDeck, sign, special }) {
         1: 'isPositive',
         3: 'isSpecial'
     }
-    if (!match) {
-        if (special) {
-            return (
-                <div className={styles.isSpecial} onClick={() => {handleAddToSideDeck(sign, value, special)}}>
-                    {signReference[sign]} {value}
-                </div>
-            )
-        }
+    if (special) {
         return (
-            <div className={sign ? styles.isPositive : styles.isNegative} onClick={() => {handleAddToSideDeck(sign, value)}} >
-               {signReference[sign]} {value}
+            <div className={styles.isSpecial} onClick={!match ? () => { handleAddToSideDeck(sign, value, special) } : undefined}>
+                {signReference[sign]} {value}
             </div>
         )
-    } else {
-        if (!special) {
-            return (
-                <div className={sign ? styles.isPositive : styles.isNegative}>
-                {signReference[sign]} {value}
-             </div>
-            )
-        } else {
-            return (
-                <div className={styles.isSpecial} >
-                {signReference[sign]} {value}
-             </div>
-            )
-        }
-        
     }
-    
+    return (
+        <div className={sign ? styles.isPositive : styles.isNegative} onClick={!match ? () => { handleAddToSideDeck(sign, value, special) } : undefined} >
+            {signReference[sign]} {value}
+        </div>
+    )
+
+  
 }
 
 export default Card;
