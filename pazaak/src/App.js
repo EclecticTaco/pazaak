@@ -1,10 +1,20 @@
+import React, { useState } from 'react';
 import PickCards from "./PreMatch/PickCards";
-function App() {
-  return (
-    <div className="App">
-      <PickCards/>
-    </div>
-  );
+import Match from './Match/Match';
+
+const App = () => {
+  const [hand, setHand] = useState([])
+  if (!hand.length) {
+    return (
+      <div className="App">
+        <PickCards hand={hand} setHand={setHand}/>
+      </div>
+    )
+  } else {
+    return (
+      <Match playerHand={hand}/>
+    )
+  }
 }
 
 export default App;

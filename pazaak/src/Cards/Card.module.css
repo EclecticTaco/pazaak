@@ -1,17 +1,35 @@
 .isNegative {
     background-color:crimson;
-    border: 20px;
-    border-color: black;
+    box-sizing: border-box;
+    width: 150px;
+    height: 150px;
+    border: solid black 5px;
+    padding: 5px;
 }
 
 .isPositive {
-    background-color:blue;
-    border: 20px;
-    border-color: black;
+    background-color: blue;
+    box-sizing: border-box;
+    width: 150px;
+    height: 150px;
+    border: solid black 5px;
+    padding: 5px;
 }
 
 .house {
     background-color: green;
-    border: 20px;
-    border-color: black;
+    box-sizing: border-box;
+    width: 150px;
+    height: 150px;
+    border: solid black 5px;
+    padding: 5px;
+}
+
+.isSpecial {
+    background-color: gold;
+    box-sizing: border-box;
+    width: 150px;
+    height: 150px;
+    border: solid black 5px;
+    padding: 5px;
 }
