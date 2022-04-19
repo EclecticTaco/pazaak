@@ -18,11 +18,6 @@ function Card({match, value,handleAddToSideDeck, sign, special }) {
         1: '+',
         3: '+/-'
     }
-    const signStyleReference = {
-        0: 'isNegative',
-        1: 'isPositive',
-        3: 'isSpecial'
-    }
     if (special) {
         return (
             <div className={styles.isSpecial} onClick={!match ? () => { handleAddToSideDeck(sign, value, special) } : undefined}>
