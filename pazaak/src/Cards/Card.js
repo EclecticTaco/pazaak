@@ -1,37 +1,45 @@
 import styles from './Card.module.css';
 
-function Card({value, sign, house, special, handleAddToSideDeck }) {
-    /*
-    TODO: Refactor to one return statement
-    move onClick into a surrounding div tag 
-    */
-    if (house) {
-        return (
-            <div className={styles.house} onClick={() => handleAddToSideDeck('+',value)}>
-                + {value}
-            </div>
-        )
-    }
+/* 
+if not a match yet
+    each card will have a event handler to add to sideDeck
+        enclose with div tag? Place event handler in div tag?
+        else move all event handlers to div tags 
+if it is a match
+    no event handlers
 
-    if (sign === "-") {
+    const handleAddToSideDeck = (sign, val, special) => {
+
+*/
+
+function Card({match, value,handleAddToSideDeck, sign, special }) {
+    const signReference = {
+        0: '-',
+        1: '+',
+        3: '+/-'
+    }
+    const signStyleReference = {
+        0: 'isNegative',
+        1: 'isPositive',
+        3: 'isSpecial'
+    }
+    if (!match) {
+        if (special) {
+            return (
+                <div className={styles.isSpecial} onClick={() => {handleAddToSideDeck(sign, value, special)}}>
+                    {signReference[sign]} {value}
+                </div>
+            )
+        }
         return (
-            <div className={styles.isNegative} onClick={() => handleAddToSideDeck('-',value)}>
-                - {value}
+            <div className={sign ? styles.isPositive : styles.isNegative} onClick={() => {handleAddToSideDeck(sign, value)}} >
+               {signReference[sign]} {value}
             </div>
-        )
-    } else if (sign === '+'){
-        return (
-        <div className={styles.isPositive} onClick={() => handleAddToSideDeck('+',value)}>
-            + {value}
-        </div>
         )
     } else {
-        return (
-            <div className={styles.isSpecial} onClick={() => handleAddToSideDeck('+/-',value)}>
-                +/- {value}
-            </div>
-            ) 
+
     }
+    
 }
 
 export default Card;
