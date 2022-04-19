@@ -35,6 +35,10 @@ const PickCards = ( {hand, setHand} ) => {
     }
 
     const handleAddToSideDeck = (sign, val, special) => {
+		if (sideDeck.length === 10) {
+			window.alert('You can only have 10 cards in your side deck')
+			return
+		}
         const finalSign = (sign || special)
         const cardToAdd = {
             sign: finalSign,
