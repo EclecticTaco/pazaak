@@ -9,13 +9,13 @@ function Card({value, sign, house, special, handleAddToSideDeck }) {
         )
     }
 
-    if (sign === 0) {
+    if (sign === "-") {
         return (
             <div className={styles.isNegative} onClick={() => handleAddToSideDeck('-',value)}>
                 - {value}
             </div>
         )
-    } else if (sign === 1){
+    } else if (sign === '+'){
         return (
         <div className={styles.isPositive} onClick={() => handleAddToSideDeck('+',value)}>
             + {value}

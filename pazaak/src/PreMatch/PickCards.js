@@ -49,26 +49,31 @@ const PickCards = ( {hand, setHand} ) => {
     return (
 		<div>
 			<div className={styles.main}>
-				<Card value={1} sign={1} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={2} sign={1} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={3} sign={1} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={4} sign={1} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={5} sign={1} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={6} sign={1} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={1} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={2} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={3} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={4} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={5} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={6} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
 
-				<Card value={1} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={2} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={3} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={4} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={5} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={6} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={1} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={2} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={3} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={4} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={5} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={6} sign={'-'} handleAddToSideDeck={handleAddToSideDeck} />
 
-				<Card value={1} special={{type:'+/-'}} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={2} special={{type:'+/-'}} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={3} special={{type:'+/-'}} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={4} special={{type:'+/-'}} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={5} special={{type:'+/-'}} handleAddToSideDeck={handleAddToSideDeck} />
-				<Card value={6} special={{type:'+/-'}} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={1} sign={'+/-'} handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={2} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={3} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={4} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={5} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
+				<Card value={6} sign={'+/-'}  handleAddToSideDeck={handleAddToSideDeck} />
+			</div>
+			<div>
+				{sideDeck.map((card) => {
+					<Card value={card.val} sign={card.sign} />
+				})}
 			</div>
 			<div>
 				<button onClick={handleSetHand} className={styles.button}>
@@ -79,6 +84,7 @@ const PickCards = ( {hand, setHand} ) => {
 				</button>
 			</div>
 		</div>
+
     )
 }
 
