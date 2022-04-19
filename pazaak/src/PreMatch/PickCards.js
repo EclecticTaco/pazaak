@@ -10,6 +10,10 @@ const PickCards = ( {hand, setHand} ) => {
         /* 
         refactor all of this, need to store initial sideDeck without having to convert from arr to obj
         */
+       if (sideDeck.length !== 10) {
+		   window.alert('Please Choose 10 cards')
+		   return;
+       }
         const cardsObject = {};
         for (let x = 0; x < sideDeck.length; x += 1) {
             cardsObject[x] = sideDeck[x]
