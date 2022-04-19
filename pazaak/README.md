@@ -20,6 +20,9 @@
         * CPU will always play card to increase card to 20
         * Otherwise, keep recieving house cards
         * If count is over 20, player minus card is avail
+        
+## Need to Refactor
+    * Refactor Card and PickCards to dynamically render instead of hardcoding and repeating
 
 ## Stretch Goals
     1. Limited pool of initial starting cards
