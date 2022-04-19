@@ -12,7 +12,7 @@ const App = () => {
     )
   } else {
     return (
-      <Match />
+      <Match playerHand={hand}/>
     )
   }
 }
