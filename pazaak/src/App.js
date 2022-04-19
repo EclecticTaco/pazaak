@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PickCards from "./PreMatch/PickCards";
+import Match from './Match/Match';
 
 const App = () => {
   const [hand, setHand] = useState([])
@@ -11,7 +12,7 @@ const App = () => {
     )
   } else {
     return (
-      <div> Place Holder</div>
+      <Match />
     )
   }
 }
