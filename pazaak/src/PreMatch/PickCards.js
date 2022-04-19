@@ -4,34 +4,33 @@ import styles from './PickCards.module.css'
 
 const PickCards = ( {hand, setHand} ) => {
     const [sideDeck, setSideDeck] = useState([]);
-
+	function getRandomInt(max) {
+		return Math.floor(Math.random() * max);
+	}
 
     const handleSetHand = () => {
         /* 
-        refactor all of this, need to store initial sideDeck without having to convert from arr to obj
+        TODO: refactor all of this, need to store initial sideDeck without having to convert from arr to obj
         */
        if (sideDeck.length !== 10) {
 		   window.alert('Please Choose 10 cards')
 		   return;
        }
-        const cardsObject = {};
-        for (let x = 0; x < sideDeck.length; x += 1) {
-            cardsObject[x] = sideDeck[x]
-        }
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * max);
-          }
-        const tempHand = []
-        for (let i = 0; i < 4; i += 1) {
-            const random = getRandomInt(10);
-            if (cardsObject[random]) {
-                tempHand.push(cardsObject[random]);
-                cardsObject[random] = false;
-            } else {
-                i -= 1;
-            }
-        }
-        setHand(hand.concat(tempHand))
+		const cardsObject = {};
+		for (let x = 0; x < sideDeck.length; x += 1) {
+			cardsObject[x] = sideDeck[x]
+		}
+		const tempHand = []
+		for (let i = 0; i < 4; i += 1) {
+			const random = getRandomInt(10);
+			if (cardsObject[random]) {
+				tempHand.push(cardsObject[random]);
+				cardsObject[random] = false;
+			} else {
+				i -= 1;
+			}
+		}
+		setHand(hand.concat(tempHand))
     }
 
     const handleAddToSideDeck = (sign, val, special) => {
@@ -53,6 +52,7 @@ const PickCards = ( {hand, setHand} ) => {
     return (
 		<div className={styles.parent}>
 			<div className={styles.main}>
+				{/* need to refactor */}
 				<Card value={1} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
 				<Card value={2} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
 				<Card value={3} sign={'+'} handleAddToSideDeck={handleAddToSideDeck} />
