@@ -23,6 +23,7 @@
 
 ## Need to Refactor
     * Refactor Card and PickCards to dynamically render instead of hardcoding and repeating
+    * Move all state to Redux
 
 ## Stretch Goals
     1. Limited pool of initial starting cards
