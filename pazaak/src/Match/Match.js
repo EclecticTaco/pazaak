@@ -24,11 +24,15 @@ import styles from './Match.module.css'
             }
         ]
 */
-const Match = ( {playerHand }) => {
+const Match = ( {playerHand }) => { 
+    const [hand, setHand] = useState(playerHand);
+    const [count, setCount] = useState(0);
+    const [board, setBoard] = useState([]);
+    
     function getRandomInt(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+        return Math.floor(Math.random() * (max - min) + min); 
       }
       
       
@@ -42,16 +46,7 @@ const Match = ( {playerHand }) => {
         }
         return card
     }
-    
-    const [hand, setHand] = useState(playerHand);
-    const [count, setCount] = useState(0);
-    const [board, setBoard] = useState([]);
 
-    /* 
-    do a check against the current count
-    generate a house card and place on board
-    call func to handle CPU turn 
-    */
     const checkCount = () => {
         if (count > 20) {
             return false 
@@ -60,11 +55,13 @@ const Match = ( {playerHand }) => {
         }   
         return true
     }
+
     useEffect(() => {
         const newCard = generateHouseCard()
         setBoard(board.concat(newCard))
         setCount(count + newCard.value)
     }, [])
+    
     const handleEndTurn = () => {
         if (!checkCount()) { // if ending round with count over 20, player loses 
             // call func to end round and reset the board. increment round count for winner
@@ -74,7 +71,7 @@ const Match = ( {playerHand }) => {
         setBoard(board.concat(newCard))
         setCount(count + newCard.value)
         if (checkCount() === "win") { 
-            // call func to end round, player wins
+            // call stand function and wait for CPU to finish
             window.alert('you win the round!')
             return 
         }
@@ -84,7 +81,13 @@ const Match = ( {playerHand }) => {
     const handleStand = () => {
 
     }
-
+    /* 
+    player choses a card
+        card is removed from hand
+        increment or decrement count by card value
+    check count
+        if 20. Player stands
+    */
     const handlePlayCard = () => {
 
     }
