@@ -25,19 +25,24 @@ import styles from './Match.module.css'
         ]
 */
 const Match = ( {playerHand }) => {
-    function getRandomInt(max) { // moove all instances of this func to utils
-        return Math.floor(Math.random() * max);
-    }
-
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+      }
+      
+      
     const generateHouseCard = () => { 
+        let value = getRandomInt(1,11)
         const card = {
-            value: getRandomInt(11),
+            value: value,
             sign: 1,
             special: true,
             isHouse: true
         }
-        return card;
+        return card
     }
+    
     const [hand, setHand] = useState(playerHand);
     const [count, setCount] = useState(0);
     const [board, setBoard] = useState([generateHouseCard()]);
@@ -48,12 +53,26 @@ const Match = ( {playerHand }) => {
     call func to handle CPU turn 
     */
     const checkCount = () => {
-
+        if (count > 20) {
+            return false 
+        } else if (count === 20) {
+            return "win"
+        }   
+        return true
     }
 
     const handleEndTurn = () => {
-        if (count > 20) return false // replace with func to clear state and reset 
-        setBoard(board.concat(generateHouseCard()))
+        if (!checkCount()) { // if ending round with count over 20, player loses 
+            // call func to end round and reset the board. increment round count for winner
+            return 
+        }
+        const newCard = generateHouseCard()
+        setBoard(board.concat(newCard))
+        if (checkCount() === "win") { 
+            // call func to end round, player wins
+            window.alert('you win the round!')
+            return 
+        }
         // call func for CPU turn
     }
 
