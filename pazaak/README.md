@@ -10,10 +10,11 @@
     * Player can end turn (draws a house card)
     * Player can stand (no further action)
     * Player can play card from hand (1 per turn)
-3  Play Again
+3.  Play Again
     * Player can chose to play again
     * Reset all state
 4. Implement CPU Player
+    * Implement a board that reflects CPU state
     * Generate random hand for CPU
     * CPU stands if 19 and no cards in hand to increase to 20
     * CPU will always play card to increase card to 20

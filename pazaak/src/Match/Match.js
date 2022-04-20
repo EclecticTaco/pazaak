@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PlayerHand from './PlayerHand';
 import Board from './Board';
 import HouseCard from '../Cards/HouseCard';
+import styles from './Match.module.css'
 /* 
     player has three choices
 
@@ -50,7 +51,7 @@ const Match = ( {playerHand }) => {
     const checkCount = () => {
 
     }
-    
+
     const handleEndTurn = () => {
         if (count > 20) return false // replace with func to clear state and reset 
         setBoard(board.concat(generateHouseCard()))
@@ -67,9 +68,14 @@ const Match = ( {playerHand }) => {
     
     return (
         <div>
-            <div>
-                <Board board={board} setBoard={setBoard}/>
-                <PlayerHand match={true} hand={hand} setHand={setHand} count={count} setCount={setCount}/>
+            <div className={styles.parent}>
+                <div className={styles.main}>
+                    <Board board={board} setBoard={setBoard}/>  
+                    <PlayerHand match={true} hand={hand} setHand={setHand} count={count} setCount={setCount}/>
+                </div>
+                <div className={styles.side}>
+                    <Board board={board} setBoard={setBoard}/> 
+                </div>
             </div>
             <div>
                 <button onClick={() => handleEndTurn()}>End Turn</button>
