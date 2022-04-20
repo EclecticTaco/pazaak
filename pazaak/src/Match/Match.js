@@ -35,7 +35,6 @@ const Match = ( {playerHand }) => {
         return Math.floor(Math.random() * (max - min) + min); 
       }
       
-      
     const generateHouseCard = () => { 
         let value = getRandomInt(1,11)
         const card = {
@@ -44,6 +43,8 @@ const Match = ( {playerHand }) => {
             special: true,
             isHouse: true
         }
+        setBoard(board.concat(card))
+        setCount(count + card.value)
         return card
     }
 
@@ -57,19 +58,15 @@ const Match = ( {playerHand }) => {
     }
 
     useEffect(() => {
-        const newCard = generateHouseCard()
-        setBoard(board.concat(newCard))
-        setCount(count + newCard.value)
+        generateHouseCard()
     }, [])
-    
+
     const handleEndTurn = () => {
         if (!checkCount()) { // if ending round with count over 20, player loses 
             // call func to end round and reset the board. increment round count for winner
             return 
         }
-        const newCard = generateHouseCard()
-        setBoard(board.concat(newCard))
-        setCount(count + newCard.value)
+        generateHouseCard()
         if (checkCount() === "win") { 
             // call stand function and wait for CPU to finish
             window.alert('you win the round!')
