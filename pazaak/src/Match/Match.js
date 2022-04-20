@@ -32,7 +32,9 @@ const Match = ( {playerHand }) => {
     const generateHouseCard = () => { 
         const card = {
             value: getRandomInt(11),
-            sign: '+'
+            sign: 1,
+            special: true,
+            isHouse: true
         }
         return card;
     }
@@ -40,10 +42,32 @@ const Match = ( {playerHand }) => {
     const [count, setCount] = useState(0);
     const [board, setBoard] = useState([generateHouseCard()]);
 
+    const checkCount = () => {
+
+    }
+
+    const handleEndTurn = () => {
+
+    }
+
+    const handleStand = () => {
+
+    }
+
+    const handlePlayCard = () => {
+
+    }
+    
     return (
         <div>
-            <Board board={board} setBoard={setBoard}/>
-            <PlayerHand match={true} hand={hand} setHand={setHand} count={count} setCount={setCount}/>
+            <div>
+                <Board board={board} setBoard={setBoard}/>
+                <PlayerHand match={true} hand={hand} setHand={setHand} count={count} setCount={setCount}/>
+            </div>
+            <div>
+                <button>End Turn</button>
+                <button>Stand</button>
+            </div>
         </div>
     )
 }

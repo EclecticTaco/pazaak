@@ -26,6 +26,7 @@
 * Move num generator func to a utils folder
 * ~~Rename all params and values to be consistent across all components~~
 * Create a func to map all cards
+* rename all vars to be consistent 
 
 ## Stretch Goals
 1. Limited pool of initial starting cards
