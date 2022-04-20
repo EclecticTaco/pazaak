@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PlayerHand from './PlayerHand';
 import Board from './Board';
 import styles from './Match.module.css'
@@ -45,7 +45,7 @@ const Match = ( {playerHand }) => {
     
     const [hand, setHand] = useState(playerHand);
     const [count, setCount] = useState(0);
-    const [board, setBoard] = useState([generateHouseCard()]);
+    const [board, setBoard] = useState([]);
 
     /* 
     do a check against the current count
@@ -60,7 +60,11 @@ const Match = ( {playerHand }) => {
         }   
         return true
     }
-
+    useEffect(() => {
+        const newCard = generateHouseCard()
+        setBoard(board.concat(newCard))
+        setCount(count + newCard.value)
+    }, [])
     const handleEndTurn = () => {
         if (!checkCount()) { // if ending round with count over 20, player loses 
             // call func to end round and reset the board. increment round count for winner
@@ -68,6 +72,7 @@ const Match = ( {playerHand }) => {
         }
         const newCard = generateHouseCard()
         setBoard(board.concat(newCard))
+        setCount(count + newCard.value)
         if (checkCount() === "win") { 
             // call func to end round, player wins
             window.alert('you win the round!')
@@ -86,6 +91,7 @@ const Match = ( {playerHand }) => {
     
     return (
         <div>
+        <div> {count}</div>
         <div className={styles.root}>
             <div className={styles.main}>
                 <div className={styles.inner}>
