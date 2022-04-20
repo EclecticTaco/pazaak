@@ -36,7 +36,7 @@ const Match = ( {playerHand }) => {
       }
       
     const generateHouseCard = () => { 
-        let value = getRandomInt(1,11)
+        const value = getRandomInt(1,11)
         const card = {
             value: value,
             sign: 1,
@@ -60,6 +60,10 @@ const Match = ( {playerHand }) => {
     useEffect(() => {
         generateHouseCard()
     }, [])
+
+    const handleRemoveCardFromHand = (card) => {
+
+    }
 
     const handleEndTurn = () => {
         if (!checkCount()) { // if ending round with count over 20, player loses 
