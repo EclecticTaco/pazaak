@@ -7,7 +7,7 @@
     * ~~Player can remove cards from side deck~~
 2. Game logic
     * ~~Game draws 4 from side deck into players hand~~
-    * Player can end turn (draws a house card)
+    * ~~GPlayer can end turn (draws a house card)~~G
     * Player can stand (no further action)
     * Player can play card from hand (1 per turn)
 3.  Play Again
@@ -19,7 +19,7 @@
     * CPU stands if 19 and no cards in hand to increase to 20
     * CPU will always play card to increase card to 20
     * Otherwise, keep recieving house cards
-    * If count is over 20, play minus card is avail
+    * If count is over 20, play minus card if avail
 
 ## Need to Refactor
 * ~~Refactor Card and PickCards to dynamically render instead of hardcoding and repeating~~
@@ -32,3 +32,4 @@
 ## Stretch Goals
 1. Limited pool of initial starting cards
 2. Implement economy for player to purchase new cards
+3. Add unique cards
