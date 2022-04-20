@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PlayerHand from './PlayerHand';
 import Board from './Board';
-import HouseCard from '../Cards/HouseCard';
 import styles from './Match.module.css'
 /* 
     player has three choices
@@ -68,15 +67,19 @@ const Match = ( {playerHand }) => {
     
     return (
         <div>
-            <div className={styles.parent}>
-                <div className={styles.main}>
-                    <Board board={board} setBoard={setBoard}/>  
+        <div className={styles.root}>
+            <div className={styles.main}>
+                <div className={styles.inner}>
+                    <Board board={board} setBoard={setBoard}/>
+                </div>
+                <div className={styles.inner}>
                     <PlayerHand match={true} hand={hand} setHand={setHand} count={count} setCount={setCount}/>
                 </div>
-                <div className={styles.side}>
-                    <Board board={board} setBoard={setBoard}/> 
-                </div>
             </div>
+            {/* <div>
+                <Board board={board} setBoard={setBoard}/> 
+            </div> */}
+        </div>
             <div>
                 <button onClick={() => handleEndTurn()}>End Turn</button>
                 <button>Stand</button>
