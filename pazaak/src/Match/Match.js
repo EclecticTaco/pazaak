@@ -42,12 +42,19 @@ const Match = ( {playerHand }) => {
     const [count, setCount] = useState(0);
     const [board, setBoard] = useState([generateHouseCard()]);
 
+    /* 
+    do a check against the current count
+    generate a house card and place on board
+    call func to handle CPU turn 
+    */
     const checkCount = () => {
 
     }
-
+    
     const handleEndTurn = () => {
-
+        if (count > 20) return false // replace with func to clear state and reset 
+        setBoard(board.concat(generateHouseCard()))
+        // call func for CPU turn
     }
 
     const handleStand = () => {
@@ -65,7 +72,7 @@ const Match = ( {playerHand }) => {
                 <PlayerHand match={true} hand={hand} setHand={setHand} count={count} setCount={setCount}/>
             </div>
             <div>
-                <button>End Turn</button>
+                <button onClick={() => handleEndTurn()}>End Turn</button>
                 <button>Stand</button>
             </div>
         </div>
