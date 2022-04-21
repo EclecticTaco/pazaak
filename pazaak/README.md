@@ -36,3 +36,16 @@
 1. Limited pool of initial starting cards
 2. Implement economy for player to purchase new cards
 3. Add unique cards
+
+### Lessons to follow up on
+```
+setState(state.concat(item1))
+
+inside 2 function calls later:
+    setState(state.concat(item2)) <--- state will not have item1 in it
+-------------------------------------------------------------------------
+setState( state => state.concat(item1))
+
+inside 2 function calls later:
+    setState( state => state.concat(item2)) <--- will have both item1 and item2
+```
