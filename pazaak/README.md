@@ -7,10 +7,11 @@
     * ~~Player can remove cards from side deck~~
 2. Game logic
     * ~~Game draws 4 from side deck into players hand~~
-    * ~~GPlayer can end turn (draws a house card)~~G
-    * Player can stand (no further action)
+    * ~~Player can end turn (draws a house card)~~
+    * ~~Player can stand (no further action)~~
     * Player can play card from hand (1 per turn)
     * Player can flip plus/minus card's sign
+    * Player can stand or end turn after playing a card
 3.  Play Again
     * Player can chose to play again
     * Reset all state
