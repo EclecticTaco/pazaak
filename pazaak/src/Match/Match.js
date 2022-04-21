@@ -61,17 +61,19 @@ const Match = ( {playerHand }) => {
         generateHouseCard()
     }, [])
 
-    const handleRemoveCardFromHand = (card) => {
-
-    }
-
+    /* 
+    increment or decrement count by value on card
+    remove card from hand
+    check count
+    */
     const handleEndTurn = () => {
-        if (!checkCount()) { // if ending round with count over 20, player loses 
+        let results = checkCount()
+        if (!results) { // if ending round with count over 20, player loses 
             // call func to end round and reset the board. increment round count for winner
             return 
         }
         generateHouseCard()
-        if (checkCount() === "win") { 
+        if (results === "win") { 
             // call stand function and wait for CPU to finish
             window.alert('you win the round!')
             return 
@@ -89,8 +91,26 @@ const Match = ( {playerHand }) => {
     check count
         if 20. Player stands
     */
-    const handlePlayCard = () => {
+    const handlePlayCard = (card) => {
+        setBoard(board.concat(card))
+        let handCopy = Array.from(hand);
+        let idx = 0
+        handCopy.forEach((handCard, i) => {
+            console.log(handCard.sign, card.sign)
+            if ((handCard.value && handCard.sign == card.value && card.sign)) {
+                idx = i;
+                return
+            }
+        })
+        handCopy.splice(idx, 1)
+        setHand(handCopy)
 
+        if (card.sign > 0) {
+            setCount(count + card.value)
+        } else {
+            setCount(count - card.value)
+        }
+        handleEndTurn();
     }
     
     return (
@@ -102,7 +122,7 @@ const Match = ( {playerHand }) => {
                     <Board board={board} setBoard={setBoard}/>
                 </div>
                 <div className={styles.inner}>
-                    <PlayerHand match={true} hand={hand} setHand={setHand} count={count} setCount={setCount}/>
+                    <PlayerHand match={true} hand={hand} setHand={setHand} count={count} setCount={setCount} handlePlayCard={handlePlayCard}/>
                 </div>
             </div>
             {/* <div>

@@ -10,6 +10,7 @@
     * ~~GPlayer can end turn (draws a house card)~~G
     * Player can stand (no further action)
     * Player can play card from hand (1 per turn)
+    * Player can flip plus/minus card's sign
 3.  Play Again
     * Player can chose to play again
     * Reset all state
@@ -28,6 +29,7 @@
 * ~~Rename all params and values to be consistent across all components~~
 * Create a func to map all cards
 * rename all vars to be consistent 
+
 
 ## Stretch Goals
 1. Limited pool of initial starting cards
