@@ -22,7 +22,7 @@ const Match = ( {playerHand }) => {
             special: true,
             isHouse: true
         }
-        setBoard(board.concat([card]))
+        setBoard(board => board.concat([card]))
         setCount(count + card.value)
         return card
     }
@@ -61,7 +61,7 @@ const Match = ( {playerHand }) => {
     }
 
     const handlePlayCard = (card) => {
-        setBoard(board.concat([card])) // this is not firing or is being overridden 
+        setBoard(board => board.concat([card])) // this is not firing or is being overridden 
         let handCopy = Array.from(hand);
         let idx = 0
         handCopy.forEach((handCard, i) => {
@@ -78,8 +78,11 @@ const Match = ( {playerHand }) => {
         } else {
             setCount(count - card.value)
         }
+        /* 
+            player should be able to chose to stand after playing a card
+            handleEndTurn is a placeholder for now
+        */
         handleEndTurn();
-        // generateHouseCard()
     }
     
     return (
