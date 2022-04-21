@@ -43,7 +43,7 @@ const Match = ( {playerHand }) => {
             special: true,
             isHouse: true
         }
-        setBoard(board.concat(card))
+        setBoard(board.concat([card]))
         setCount(count + card.value)
         return card
     }
@@ -70,6 +70,7 @@ const Match = ( {playerHand }) => {
         let results = checkCount()
         if (!results) { // if ending round with count over 20, player loses 
             // call func to end round and reset the board. increment round count for winner
+            window.alert('You have lost the round')
             return 
         }
         generateHouseCard()
@@ -84,19 +85,12 @@ const Match = ( {playerHand }) => {
     const handleStand = () => {
 
     }
-    /* 
-    player choses a card
-        card is removed from hand
-        increment or decrement count by card value
-    check count
-        if 20. Player stands
-    */
+
     const handlePlayCard = (card) => {
-        setBoard(board.concat(card))
+        setBoard(board.concat([card])) // this is not firing or is being overridden 
         let handCopy = Array.from(hand);
         let idx = 0
         handCopy.forEach((handCard, i) => {
-            console.log(handCard.sign, card.sign)
             if ((handCard.value && handCard.sign == card.value && card.sign)) {
                 idx = i;
                 return
@@ -111,6 +105,7 @@ const Match = ( {playerHand }) => {
             setCount(count - card.value)
         }
         handleEndTurn();
+        // generateHouseCard()
     }
     
     return (
