@@ -2,28 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PlayerHand from './PlayerHand';
 import Board from './Board';
 import styles from './Match.module.css'
-/* 
-    player has three choices
 
-    stand:
-        set the final count to the current count
-    play card:
-        player can pick a card from current hand.
-        add or subtract current count by picked card value
-        update current count
-    end turn
-        generate house card
-        add house card value to current count
-        update current count
-        
-        board: array of card objs
-        [
-            {
-                value: x
-                sign: +
-            }
-        ]
-*/
 const Match = ( {playerHand }) => { 
     const [hand, setHand] = useState(playerHand);
     const [count, setCount] = useState(0);
@@ -61,11 +40,6 @@ const Match = ( {playerHand }) => {
         generateHouseCard()
     }, [])
 
-    /* 
-    increment or decrement count by value on card
-    remove card from hand
-    check count
-    */
     const handleEndTurn = () => {
         let results = checkCount()
         if (!results) { // if ending round with count over 20, player loses 
