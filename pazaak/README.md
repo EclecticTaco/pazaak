@@ -17,7 +17,7 @@
     * Reset all state
 4. Implement CPU Player
     * Implement a board that reflects CPU state
-    * Generate random hand for CPU
+    * ~~Generate random hand for CPU~~
     * CPU stands if 19 and no cards in hand to increase to 20
     * CPU will always play card to increase card to 20
     * Otherwise, keep recieving house cards
@@ -30,6 +30,7 @@
 * ~~Rename all params and values to be consistent across all components~~
 * Put a delay in for when player recieves a new card, put a slight delay on CPU turns 
 * handleAddToSideDeck should just take in the card object
+* Seperate and group Bot vs Player components 
 
 
 ## Stretch Goals
