@@ -40,7 +40,7 @@ const Match = ( {playerHand }) => {
         const temp = [];
         for (let i = 0; i < 4; i += 1) {
             const card = {
-                sign: getRandomInt(0,4),
+                sign: getRandomInt(0,3),
                 value: getRandomInt(1,7),
                 match: true
             }
@@ -156,7 +156,7 @@ const Match = ( {playerHand }) => {
         <div>
         <div> {count}</div>
         <div className={styles.root}>
-            
+
             <div className={styles.main}>
                 <div className={styles.inner}>
                     <Board board={board} />
@@ -172,6 +172,7 @@ const Match = ( {playerHand }) => {
                 </div>
                 <div className={styles.inner}>
                     <BotHand hand={botHand} handlePlayCard={handlePlayCard}/>
+                    {/*replace handler to only play cards to bot's board */}
                 </div>
             </div>
 

@@ -12,11 +12,18 @@ if it is a match
 
 */
 
-function Card({match, value,handleAddToSideDeck, sign, special, isHouse, handlePlayCard, card}) {
+function Card({match, value,handleAddToSideDeck, sign, special, isHouse, handlePlayCard, card, botCard}) {
     const signReference = {
         0: '-',
         1: '+',
         2: '+/-'
+    }
+    if (botCard) {
+        return ( // replace handler to play card to bot's hand
+            <div className={styles.botHand}>
+        
+            </div>
+        )
     }
     if (special) {
         return (

@@ -33,3 +33,12 @@
     border: solid black 5px;
     padding: 5px;
 }
+
+.botHand {
+    background-color: grey;
+    box-sizing: border-box;
+    width: 150px;
+    height: 150px;
+    border: solid black 5px;
+    padding: 5px;
+}

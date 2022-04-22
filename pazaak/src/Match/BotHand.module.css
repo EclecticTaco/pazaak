@@ -1,0 +1,13 @@
+.botHand {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 6;
+    justify-content: start;
+    align-items: baseline;
+    gap: 10px;
+    box-sizing: content-box;
+    width: 100%;
+    height: 45%;
+    border: 2px coral solid;
+}

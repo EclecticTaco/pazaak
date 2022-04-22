@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import Card from '../Cards/Card'
-import styles from './PlayerHand.module.css'
+import styles from './BotHand.module.css'
 
-const BotHand = ({hand, handlePlayCard}) => {
+const BotHand = ({hand, handlePlayCard}) => { // replace handler to only play cards to bot's board
     return (
-        <div className={styles.PlayerHand}>
+        <div className={styles.botHand}>
             {
                 hand.map((card) => {
                     return (
                         <div>
-                            <Card match={true} sign={card.sign} value={card.value} special={card.special} handlePlayCard={handlePlayCard} card={card}/>
+                            <Card match={true} sign={card.sign} value={card.value} special={card.special} handlePlayCard={handlePlayCard} card={card} botCard={true}/>
                         </div> 
                     )
                 })
