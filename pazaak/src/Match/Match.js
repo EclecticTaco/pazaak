@@ -51,13 +51,13 @@ const Match = ( {playerHand }) => {
     const handleEndTurn = () => {
         let results = checkCount()
         if (!results) { 
-            // call func to end round and reset the board. increment round count for winner
+            // set player active to false. Wait until bot is done. 
             window.alert('You have lost the round')
             return 
         }
         generateHouseCard()
         if (results === "win") { 
-            // call stand function and wait for CPU to finish
+            // set player active to false
             window.alert('you win the round!')
             return 
         }
