@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import HouseCard from '../Cards/HouseCard';
+import styles from './Board.module.css'
+import Card from '../Cards/Card';
+
 
 const Board = ( {board} ) => {
     return (
-        <div>
+        <div className={styles.board}>
             {board.map((card) => {
-                return <HouseCard value={card.value}/> 
+                return <Card value={card.value} sign={card.sign} special={card.special} isHouse={card.isHouse}/> 
             })}
         </div>
     )

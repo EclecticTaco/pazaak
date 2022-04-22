@@ -12,7 +12,7 @@ if it is a match
 
 */
 
-function Card({match, value,handleAddToSideDeck, sign, special }) {
+function Card({match, value,handleAddToSideDeck, sign, special, isHouse, handlePlayCard, card}) {
     const signReference = {
         0: '-',
         1: '+',
@@ -20,13 +20,13 @@ function Card({match, value,handleAddToSideDeck, sign, special }) {
     }
     if (special) {
         return (
-            <div className={styles.isSpecial} onClick={!match ? () => { handleAddToSideDeck(sign, value, special) } : undefined}>
+            <div className={isHouse ? styles.isHouse : styles.isSpecial} onClick={!match && !isHouse ? () => { handleAddToSideDeck(sign, value, special) } : () => handlePlayCard(card)}> 
                 {signReference[sign]} {value}
             </div>
         )
     }
     return (
-        <div className={sign ? styles.isPositive : styles.isNegative} onClick={!match ? () => { handleAddToSideDeck(sign, value, special) } : undefined} >
+        <div className={sign ? styles.isPositive : styles.isNegative} onClick={!match ? () => { handleAddToSideDeck(sign, value, special) } : () => handlePlayCard(card)}>
             {signReference[sign]} {value}
         </div>
     )
