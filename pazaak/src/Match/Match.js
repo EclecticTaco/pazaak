@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import PlayerHand from './PlayerHand';
-import Board from './Board';
+import PlayerHand from './Player/PlayerHand';
+import PlayerBoard from './Player/PlayerBoard'
 import BotHand from './BotHand';
 import styles from './Match.module.css'
 
@@ -159,7 +159,7 @@ const Match = ( {playerHand }) => {
 
             <div className={styles.main}>
                 <div className={styles.inner}>
-                    <Board board={board} />
+                    <PlayerBoard board={board} />
                 </div>
                 <div className={styles.inner}>
                     <PlayerHand hand={hand} handlePlayCard={handlePlayCard}/>
@@ -168,7 +168,7 @@ const Match = ( {playerHand }) => {
 
             <div className={styles.main}>
                 <div className={styles.inner}>
-                    <Board board={board} />
+                    <PlayerBoard board={board} />
                 </div>
                 <div className={styles.inner}>
                     <BotHand hand={botHand} handlePlayCard={handlePlayCard}/>

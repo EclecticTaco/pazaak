@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Card from '../Cards/Card'
+import Card from '../../Cards/Card';
 import styles from './PlayerHand.module.css'
 
 /* 

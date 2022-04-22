@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Board.module.css'
-import Card from '../Cards/Card';
+import Card from '../../Cards/Card';
 
 
 const Board = ( {board} ) => {
