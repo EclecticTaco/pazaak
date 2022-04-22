@@ -7,6 +7,8 @@ const Match = ( {playerHand }) => {
     const [hand, setHand] = useState(playerHand);
     const [count, setCount] = useState(0);
     const [board, setBoard] = useState([]);
+    const [isPlayerActive, setPLayerActive] = useState(true);
+    const [isBotActive, setBotActive] = useState(true);
     
     function getRandomInt(min, max) {
         min = Math.ceil(min);
@@ -83,6 +85,37 @@ const Match = ( {playerHand }) => {
             player should not be able to click and play more cards to board
         */
     }
+    /* 
+    if isBotActive
+        accept calls to handleBotTurn
+    else
+        return
+
+    if isPlayerActive is false
+        loop until victory or lost conditons are met
+
+    read the current count
+        if a card in hand can bring total up to 20
+            play card
+            set isBot active to false
+        else 
+            end turn
+        if count is over 20
+             if card can bring count under 20
+                play card
+                    stand if new count is 19 or 20
+            else
+                end turn
+        
+
+    */
+    const handleBotTurn = (isBotActive, isPlayerActive) => {
+        
+    }
+
+    const handleCompareCounts = () => {
+        // call this when both players either stand, end on a 20, or bust.
+    }   
     
     return (
         <div>
