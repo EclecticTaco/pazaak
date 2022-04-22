@@ -16,7 +16,7 @@ function Card({match, value,handleAddToSideDeck, sign, special, isHouse, handleP
     const signReference = {
         0: '-',
         1: '+',
-        3: '+/-'
+        2: '+/-'
     }
     if (special) {
         return (

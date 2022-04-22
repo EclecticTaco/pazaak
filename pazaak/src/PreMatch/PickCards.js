@@ -67,7 +67,7 @@ const PickCards = ({ hand, setHand }) => {
 				}
 				{
 					[...Array(6)].map((x, i) => {
-						return <Card value={i + 1} sign={3} special={1} handleAddToSideDeck={handleAddToSideDeck}/>
+						return <Card value={i + 1} sign={2} special={1} handleAddToSideDeck={handleAddToSideDeck}/>
 					})
 				}
 			</div>
