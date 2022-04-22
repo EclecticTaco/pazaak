@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PlayerHand from './PlayerHand';
 import Board from './Board';
+import BotHand from './BotHand';
 import styles from './Match.module.css'
 
 const Match = ( {playerHand }) => { 
@@ -8,10 +9,10 @@ const Match = ( {playerHand }) => {
     const [count, setCount] = useState(0);
     const [board, setBoard] = useState([]);
 
-    const [isPlayerActive, setPLayerActive] = useState(true);
-    const [isBotActive, setBotActive] = useState(true);
+    const [isPlayerActive, setisPlayerActive] = useState(true);
+    const [isBotActive, setisBotActive] = useState(true);
 
-    const [botHand, setBotHand] = useState('randomly gen bothand');
+    const [botHand, setBotHand] = useState([]);
     const [botCount, setbotCount] = useState(0);
     const [botBoard, setBotBoard] = useState([]);
     
@@ -35,6 +36,19 @@ const Match = ( {playerHand }) => {
         return card
     }
 
+    const generateBotHand = () => { 
+        const temp = [];
+        for (let i = 0; i < 4; i += 1) {
+            const card = {
+                sign: getRandomInt(0,4),
+                value: getRandomInt(1,7),
+                match: true
+            }
+            temp.push(card)
+        }
+        setBotHand(botHand.concat(temp))
+    }
+
     const checkCount = () => {
         if (count > 20) {
             return false 
@@ -45,7 +59,8 @@ const Match = ( {playerHand }) => {
     }
 
     useEffect(() => {
-        generateHouseCard()
+        generateHouseCard();
+        generateBotHand();
     }, [])
 
     const handleEndTurn = () => {
@@ -115,20 +130,22 @@ const Match = ( {playerHand }) => {
         
 
     */
-    const handleBotTurn = (isBotActive, isPlayerActive) => {
+    const handleBotTurn = () => {
         if (!isBotActive) return;
+
 
         let repeat = 1;
         while (repeat < 1) {
 
             // if bot loses or wins a round, set botstop to true
-            let botStop = false
-            if (!isPlayerActive && !botStop) {
-                repeat += 1;
+            let botStop = false  
+            if (!botStop) {
+                // bot has either stood, end turn, or played a card
             } else {
-                repeat = 0;
+                repeat -= 1;
             }
         }
+
     }
 
     const handleCompareCounts = () => {
@@ -139,6 +156,7 @@ const Match = ( {playerHand }) => {
         <div>
         <div> {count}</div>
         <div className={styles.root}>
+            
             <div className={styles.main}>
                 <div className={styles.inner}>
                     <Board board={board} />
@@ -147,9 +165,16 @@ const Match = ( {playerHand }) => {
                     <PlayerHand hand={hand} handlePlayCard={handlePlayCard}/>
                 </div>
             </div>
-            {/* <div>
-                <Board board={board} setBoard={setBoard}/> 
-            </div> */}
+
+            <div className={styles.main}>
+                <div className={styles.inner}>
+                    <Board board={board} />
+                </div>
+                <div className={styles.inner}>
+                    <BotHand hand={botHand} handlePlayCard={handlePlayCard}/>
+                </div>
+            </div>
+
         </div>
             <div>
                 <button onClick={() => handleEndTurn()}>End Turn</button>
