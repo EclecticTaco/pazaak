@@ -3,7 +3,7 @@ import styles from './Board.module.css'
 import Card from '../../Cards/Card';
 
 
-const Board = ( {board} ) => {
+const PlayerBoard = ( {board} ) => {
     return (
         <div className={styles.board}>
             {board.map((card) => {
@@ -13,4 +13,4 @@ const Board = ( {board} ) => {
     )
 }
 
-export default Board;
+export default PlayerBoard;
