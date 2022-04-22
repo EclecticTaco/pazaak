@@ -30,7 +30,7 @@
 * ~~Rename all params and values to be consistent across all components~~
 * Put a delay in for when player recieves a new card, put a slight delay on CPU turns 
 * handleAddToSideDeck should just take in the card object
-* Seperate and group Bot vs Player components 
+* ~~Seperate and group Bot vs Player components~~ 
 * Combine BotHand and PlayerHand components
 
 
