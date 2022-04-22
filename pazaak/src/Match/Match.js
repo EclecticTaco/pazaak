@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PlayerHand from './Player/PlayerHand';
 import PlayerBoard from './Player/PlayerBoard'
+import BotBoard from './Bot/BotBoard';
 import BotHand from './Bot/BotHand';
 import styles from './Match.module.css'
 
@@ -168,7 +169,7 @@ const Match = ( {playerHand }) => {
 
             <div className={styles.main}>
                 <div className={styles.inner}>
-                    <PlayerBoard board={board} />
+                    <BotBoard board={board} />
                 </div>
                 <div className={styles.inner}>
                     <BotHand hand={botHand} handlePlayCard={handlePlayCard}/>
