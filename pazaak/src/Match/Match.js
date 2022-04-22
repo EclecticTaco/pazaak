@@ -22,7 +22,7 @@ const Match = ( {playerHand }) => {
             special: true,
             isHouse: true
         }
-        setBoard(board => board.concat([card]))
+        setBoard(board.concat([card]))
         setCount(count + card.value)
         return card
     }
@@ -42,7 +42,7 @@ const Match = ( {playerHand }) => {
 
     const handleEndTurn = () => {
         let results = checkCount()
-        if (!results) { // if ending round with count over 20, player loses 
+        if (!results) { 
             // call func to end round and reset the board. increment round count for winner
             window.alert('You have lost the round')
             return 
@@ -80,9 +80,8 @@ const Match = ( {playerHand }) => {
         }
         /* 
             player should be able to chose to stand after playing a card
-            handleEndTurn is a placeholder for now
+            player should not be able to click and play more cards to board
         */
-        handleEndTurn();
     }
     
     return (
@@ -91,10 +90,10 @@ const Match = ( {playerHand }) => {
         <div className={styles.root}>
             <div className={styles.main}>
                 <div className={styles.inner}>
-                    <Board board={board} setBoard={setBoard}/>
+                    <Board board={board} />
                 </div>
                 <div className={styles.inner}>
-                    <PlayerHand match={true} hand={hand} setHand={setHand} count={count} setCount={setCount} handlePlayCard={handlePlayCard}/>
+                    <PlayerHand hand={hand} handlePlayCard={handlePlayCard}/>
                 </div>
             </div>
             {/* <div>
