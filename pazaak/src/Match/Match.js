@@ -152,32 +152,32 @@ const Match = ( {playerHand }) => {
         generateHouseCard();
         generateBotHand();
     }, [])
-    
+
     return (
         <div>
             <div> {count}</div>
-                <div className={styles.root}>
+            <div className={styles.root}>
 
-                    <div className={styles.main}>
-                        <div className={styles.inner}>
-                            <PlayerBoard board={board} />
-                        </div>
-                        <div className={styles.inner}>
-                            <PlayerHand hand={hand} handlePlayCard={handlePlayCard}/>
-                        </div>
+                <div className={styles.main}>
+                    <div className={styles.inner}>
+                        <PlayerBoard board={board} />
                     </div>
-
-                    <div className={styles.main}>
-                        <div className={styles.inner}>
-                            <BotBoard board={botBoard} />
-                        </div>
-                        <div className={styles.inner}>
-                            <BotHand hand={botHand} handlePlayCard={handlePlayCard}/>
-                            {/*replace handler to only play cards to bot's board */}
-                        </div>
+                    <div className={styles.inner}>
+                        <PlayerHand hand={hand} handlePlayCard={handlePlayCard} />
                     </div>
-
                 </div>
+
+                <div className={styles.main}>
+                    <div className={styles.inner}>
+                        <BotBoard board={botBoard} />
+                    </div>
+                    <div className={styles.inner}>
+                        <BotHand hand={botHand} handlePlayCard={handlePlayCard} />
+                        {/*replace handler to only play cards to bot's board */}
+                    </div>
+                </div>
+
+            </div>
             <div>
                 <button onClick={() => handleEndTurn()}>End Turn</button>
                 <button>Stand</button>
