@@ -7,8 +7,14 @@ const Match = ( {playerHand }) => {
     const [hand, setHand] = useState(playerHand);
     const [count, setCount] = useState(0);
     const [board, setBoard] = useState([]);
+
     const [isPlayerActive, setPLayerActive] = useState(true);
     const [isBotActive, setBotActive] = useState(true);
+
+    const [botHand, setBotHand] = useState('randomly gen bothand');
+    const [botCount, setbotCount] = useState(0);
+    const [botBoard, setBotBoard] = useState([]);
+    
     
     function getRandomInt(min, max) {
         min = Math.ceil(min);
