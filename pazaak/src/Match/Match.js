@@ -59,11 +59,6 @@ const Match = ( {playerHand }) => {
         return true
     }
 
-    useEffect(() => {
-        generateHouseCard();
-        generateBotHand();
-    }, [])
-
     const handleEndTurn = () => {
         let results = checkCount()
         if (!results) { 
@@ -152,32 +147,37 @@ const Match = ( {playerHand }) => {
     const handleCompareCounts = () => {
         // call this when both players either stand, end on a 20, or bust.
     }   
+
+    useEffect(() => {
+        generateHouseCard();
+        generateBotHand();
+    }, [])
     
     return (
         <div>
-        <div> {count}</div>
-        <div className={styles.root}>
+            <div> {count}</div>
+                <div className={styles.root}>
 
-            <div className={styles.main}>
-                <div className={styles.inner}>
-                    <PlayerBoard board={board} />
-                </div>
-                <div className={styles.inner}>
-                    <PlayerHand hand={hand} handlePlayCard={handlePlayCard}/>
-                </div>
-            </div>
+                    <div className={styles.main}>
+                        <div className={styles.inner}>
+                            <PlayerBoard board={board} />
+                        </div>
+                        <div className={styles.inner}>
+                            <PlayerHand hand={hand} handlePlayCard={handlePlayCard}/>
+                        </div>
+                    </div>
 
-            <div className={styles.main}>
-                <div className={styles.inner}>
-                    <BotBoard board={board} />
-                </div>
-                <div className={styles.inner}>
-                    <BotHand hand={botHand} handlePlayCard={handlePlayCard}/>
-                    {/*replace handler to only play cards to bot's board */}
-                </div>
-            </div>
+                    <div className={styles.main}>
+                        <div className={styles.inner}>
+                            <BotBoard board={botBoard} />
+                        </div>
+                        <div className={styles.inner}>
+                            <BotHand hand={botHand} handlePlayCard={handlePlayCard}/>
+                            {/*replace handler to only play cards to bot's board */}
+                        </div>
+                    </div>
 
-        </div>
+                </div>
             <div>
                 <button onClick={() => handleEndTurn()}>End Turn</button>
                 <button>Stand</button>
