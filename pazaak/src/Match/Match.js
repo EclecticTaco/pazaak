@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PlayerHand from './Player/PlayerHand';
 import PlayerBoard from './Player/PlayerBoard'
-import BotHand from './BotHand';
+import BotHand from './Bot/BotHand';
 import styles from './Match.module.css'
 
 const Match = ( {playerHand }) => { 
