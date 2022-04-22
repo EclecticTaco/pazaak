@@ -116,7 +116,19 @@ const Match = ( {playerHand }) => {
 
     */
     const handleBotTurn = (isBotActive, isPlayerActive) => {
-        
+        if (!isBotActive) return;
+
+        let repeat = 1;
+        while (repeat < 1) {
+
+            // if bot loses or wins a round, set botstop to true
+            let botStop = false
+            if (!isPlayerActive && !botStop) {
+                repeat += 1;
+            } else {
+                repeat = 0;
+            }
+        }
     }
 
     const handleCompareCounts = () => {
