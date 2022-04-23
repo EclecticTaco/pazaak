@@ -142,6 +142,7 @@ const Match = ( {playerHand }) => {
     const handleCompareCounts = () => {
         // use this to set rounds won?
         // also use to set active stats for player and bot
+        // only do checks if player is active
         if (count === 20) {
             return 'Player has won'
         }
