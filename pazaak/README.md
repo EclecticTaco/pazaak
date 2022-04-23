@@ -12,6 +12,9 @@
     * Player can play card from hand (1 per turn)
     * Player can flip plus/minus card's sign
     * Player can stand or end turn after playing a card
+    * Lock the player from inputs when they are not active
+        * Insert isActive boolean to all user inputs
+        * If player stands/ending turn when count > 20/counti s 20: set player in !isActive
 3.  Play Again
     * Player can chose to play again
     * Reset all state
