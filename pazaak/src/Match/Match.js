@@ -60,18 +60,13 @@ const Match = ( {playerHand }) => {
     }
 
     const handleEndTurn = () => {
-        let results = checkCount()
-        if (!results) { 
-            // set player active to false. Wait until bot is done. 
-            window.alert('You have lost the round')
-            return 
-        }
+        /* 
+        if count is over 20 
+            set player or bot in inactive 
+            other player wins the round
+        */
+
         generateHouseCard()
-        if (results === "win") { 
-            // set player active to false
-            window.alert('you win the round!')
-            return 
-        }
         // call func for CPU turn
     }
 
@@ -145,6 +140,14 @@ const Match = ( {playerHand }) => {
     }
 
     const handleCompareCounts = () => {
+        // use this to set rounds won?
+        // also use to set active stats for player and bot
+        if (count === 20) {
+            return 'Player has won'
+        }
+        if (botCount === 20) {
+            return 'Bot has won'
+        }
         // call this when both players either stand, end on a 20, or bust.
     }   
 
@@ -152,6 +155,11 @@ const Match = ( {playerHand }) => {
         generateHouseCard();
         generateBotHand();
     }, [])
+
+    useEffect(() => {
+        const results = handleCompareCounts();
+        if (results) window.alert(results)
+    })  
 
     return (
         <div>
