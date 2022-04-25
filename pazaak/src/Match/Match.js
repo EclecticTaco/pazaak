@@ -122,7 +122,7 @@ const Match = ( {playerHand }) => {
 
     */
     const handleBotTurn = () => {
-        if (!isBotActive) return;
+        if (!isBotActive) return
 
 
         let repeat = 1;
@@ -140,9 +140,20 @@ const Match = ( {playerHand }) => {
     }
 
     const handleCompareCounts = () => {
-        // use this to set rounds won?
-        // also use to set active stats for player and bot
-        // only do checks if player is active
+        /* 
+        if player is active and count is over 20 on a stand or end turn
+            player loses round
+            increment rounds won on bot
+        if bot is active and count is over 20 on a stand or end turn
+            bot loses round
+            increment rounds won on player 
+        
+        if both bot and player is not active
+            increment rounds won on bot or player with the count closes to 20
+            if tie
+                replay round
+        */
+
         if (count === 20) {
             return 'Player has won'
         }
