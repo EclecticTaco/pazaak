@@ -14,7 +14,7 @@ const Match = ( {playerHand }) => {
     const [isBotActive, setisBotActive] = useState(true);
 
     const [botHand, setBotHand] = useState([]);
-    const [botCount, setbotCount] = useState(0);
+    const [botCount, setBotCount] = useState(0);
     const [botBoard, setBotBoard] = useState([]);
     
     
@@ -24,7 +24,7 @@ const Match = ( {playerHand }) => {
         return Math.floor(Math.random() * (max - min) + min); 
       }
       
-    const generateHouseCard = () => { 
+    const generateHouseCard = (player) => { 
         const value = getRandomInt(1,11)
         const card = {
             value: value,
@@ -32,8 +32,13 @@ const Match = ( {playerHand }) => {
             special: true,
             isHouse: true
         }
-        setBoard(board.concat([card]))
-        setCount(count + card.value)
+        if (player) {
+            setBoard(board.concat([card]))
+            setCount(count + card.value)
+        } else {
+            setBotBoard(botBoard.concat(card))
+            setBotCount(count + card.value)
+        }
         return card
     }
 
@@ -66,7 +71,7 @@ const Match = ( {playerHand }) => {
             other player wins the round
         */
 
-        generateHouseCard()
+        generateHouseCard(true)
         // call func for CPU turn
     }
 
@@ -164,7 +169,8 @@ const Match = ( {playerHand }) => {
     }   
 
     useEffect(() => {
-        generateHouseCard();
+        generateHouseCard(true);
+        generateHouseCard(false);
         generateBotHand();
     }, [])
 
