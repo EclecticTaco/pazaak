@@ -35,6 +35,7 @@
 * handleAddToSideDeck should just take in the card object
 * ~~Seperate and group Bot vs Player components~~ 
 * Combine BotHand and PlayerHand components
+* Refacor the handlePlayCard func
 
 
 ## Stretch Goals
