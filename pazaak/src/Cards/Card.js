@@ -47,7 +47,7 @@ function Card({card, handler}) {
             padding: '5px'
         },
     }
-    if (card.stle = 'isBotHand') {
+    if (card.style === 'isBotHand') {
         return (
             <div style={styles[card.style]} onClick={ handler ? () => {handler(card)} : () => {card.handler(card)}}>
             </div>
