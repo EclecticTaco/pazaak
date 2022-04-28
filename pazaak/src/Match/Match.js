@@ -36,8 +36,8 @@ const Match = ( {playerHand }) => {
             setBoard(board.concat([card]))
             setCount(count + card.value)
         } else {
-            setBotBoard(botBoard.concat(card))
-            setBotCount(count + card.value)
+            setBotBoard((botBoard) => botBoard.concat(card))
+            setBotCount((count) => count + card.value)
         }
         return card
     }
@@ -76,11 +76,12 @@ const Match = ( {playerHand }) => {
     }
 
     const handleStand = () => {
-
+        setisPlayerActive((prev) => !prev)
+        handleBotTurn()
     }
 
     const handlePlayCard = (card) => {
-        setBoard(board => board.concat([card])) // this is not firing or is being overridden 
+        setBoard(board => board.concat([card])) 
         let handCopy = Array.from(hand);
         let idx = 0
         handCopy.forEach((handCard, i) => {
@@ -102,6 +103,26 @@ const Match = ( {playerHand }) => {
             player should not be able to click and play more cards to board
         */
     }
+
+    const handleBotPlayCard = (card) => {
+        setBotBoard(botBoard => botBoard.concat([card]));
+        let handCopy = Array.from(botHand);
+        let idx = 0;
+        handCopy.forEach((handCard, i) => {
+            if ((handCard.value && handCard.sign == card.value && card.sign)) {
+                idx = i;
+                return
+            }
+        })
+        handCopy.splice(idx, 1)
+        setBotHand(handCopy)
+        if (card.sign > 0) {
+            setBotCount((botCount)  => botCount + card.value)
+        } else {
+            setBotCount((botCount) => botCount - card.value)
+        }
+    }
+
     /* 
     if isBotActive
         accept calls to handleBotTurn
@@ -128,7 +149,22 @@ const Match = ( {playerHand }) => {
     */
     const handleBotTurn = () => {
         if (!isBotActive) return
-
+        generateHouseCard(false);
+        if (botCount == 19 || botCount == 20) {
+            setisBotActive(prev => !prev);
+            return
+        }
+        botHand.forEach((card) => {
+            console.log(botCount, card.value)
+            if ( ( (botCount < 20) && (card.sign == 1) ) && ( (card.value + botCount) === (19 || 20) ) ) {
+                handleBotPlayCard(card)
+                setisBotActive((prev) => !prev)
+                return
+            } else if ( ( (botCount > 20) && (card.sign === 0) ) && ( (botCount - card.value) === (19 || 20)) ) {
+                handleBotPlayCard(card)
+                setisBotActive((prev) => !prev)
+            }
+        })
 
         let repeat = 1;
         while (repeat < 1) {
@@ -206,7 +242,7 @@ const Match = ( {playerHand }) => {
             </div>
             <div>
                 <button onClick={() => handleEndTurn()}>End Turn</button>
-                <button>Stand</button>
+                <button onClick={() => handleStand()}>Stand</button>
             </div>
         </div>
     )
