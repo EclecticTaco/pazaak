@@ -1,4 +1,4 @@
-function Card({key, card}) {
+function Card({card}) {
     const signReference = {
         0: '-',
         1: '+',
