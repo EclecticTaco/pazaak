@@ -58,23 +58,45 @@ const PickCards = ({ hand, setHand }) => {
 				{/* render the main deck here */}
 				{
 					[...Array(6)].map((x, i) => {
-						return <Card key={uuidv4()} value={i + 1} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
+						const card = {
+							key: uuidv4(),
+							value:i + 1,
+							sign: 0,
+							style: 'isNegative',
+							handler: handleAddToSideDeck
+						}
+						return <Card key={card.key} card={card} />
 					})
 				}
 				{
 					[...Array(6)].map((x, i) => {
-						return <Card key={uuidv4()}  value={i + 1} sign={1} handleAddToSideDeck={handleAddToSideDeck}/>
+						const card = {
+							key: uuidv4(),
+							value:i + 1,
+							sign: 1,
+							style: 'isPositive',
+							handler: handleAddToSideDeck
+						}
+						return <Card key={card.key} card={card} />
 					})
 				}
 				{
 					[...Array(6)].map((x, i) => {
-						return <Card key={uuidv4()}  value={i + 1} sign={2} special={1} handleAddToSideDeck={handleAddToSideDeck}/>
+						const card = {
+							key: uuidv4(),
+							value:i + 1,
+							sign: 2,
+							special:1,
+							style: 'isSpecial',
+							handler: handleAddToSideDeck
+						}
+						return <Card key={card.key} card={card} />
 					})
 				}
 			</div>
 			<div className={styles.side}>
 				{sideDeck.map((card, i) => {
-					return <Card key={uuidv4()}  value={card.value} sign={card.sign} special={card.special}/>
+					return <Card key={card.key}  card={card}/>
 				})}
 			</div>
 			<div className={styles.parent}>

@@ -1,31 +1,58 @@
-import styles from './Card.module.css';
-
-function Card({match, value,handleAddToSideDeck, sign, special, isHouse, handlePlayCard, card, botCard}) {
+function Card({key, card}) {
     const signReference = {
         0: '-',
         1: '+',
         2: '+/-'
     }
-    if (botCard) {
-        return ( // replace handler to play card to bot's hand
-            <div className={styles.botHand}>
-        
-            </div>
-        )
+
+    const styles = {
+        isNegative: {
+            backgroundColor:'crimson',
+            boxSizing: 'border-box',
+            width: '150px',
+            height: '150px',
+            border: 'solid black 5px',
+            padding: '5px'
+        },
+        isPositive: {
+            backgroundColor:'blue',
+            boxSizing: 'border-box',
+            width: '150px',
+            height: '150px',
+            border: 'solid black 5px',
+            padding: '5px'
+        },
+        isHouse: {
+            backgroundColor:'green',
+            boxSizing: 'border-box',
+            width: '150px',
+            height: '150px',
+            border: 'solid black 5px',
+            padding: '5px'
+        },
+        isSpecial: {
+            backgroundColor:'gold',
+            boxSizing: 'border-box',
+            width: '150px',
+            height: '150px',
+            border: 'solid black 5px',
+            padding: '5px'
+        },
+        isBotHand: {
+            backgroundColor:'grey',
+            boxSizing: 'border-box',
+            width: '150px',
+            height: '150px',
+            border: 'solid black 5px',
+            padding: '5px'
+        },
     }
-    if (special) {
-        return (
-            <div className={isHouse ? styles.isHouse : styles.isSpecial} onClick={!match && !isHouse ? () => { handleAddToSideDeck(sign, value, special) } : () => handlePlayCard(card)}> 
-                {signReference[sign]} {value}
-            </div>
-        )
-    }
+    
     return (
-        <div className={sign ? styles.isPositive : styles.isNegative} onClick={!match ? () => { handleAddToSideDeck(sign, value, special) } : () => handlePlayCard(card)}>
-            {signReference[sign]} {value}
+        <div style={styles[card.style]} onClick={() => {card.handler(card.sign, card.value, card.special)}}>
+            {signReference[card.sign]} {card.value}
         </div>
     )
-
   
 }
 
