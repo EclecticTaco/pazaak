@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from '../Cards/Card'
 import styles from './PickCards.module.css'
+import { v4 as uuidv4 } from 'uuid';
 
 const PickCards = ({ hand, setHand }) => {
 	const [sideDeck, setSideDeck] = useState([]);
@@ -57,23 +58,23 @@ const PickCards = ({ hand, setHand }) => {
 				{/* render the main deck here */}
 				{
 					[...Array(6)].map((x, i) => {
-						return <Card key={i+1} value={i + 1} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
+						return <Card key={uuidv4()} value={i + 1} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
 					})
 				}
 				{
 					[...Array(6)].map((x, i) => {
-						return <Card key={i+1} value={i + 1} sign={1} handleAddToSideDeck={handleAddToSideDeck}/>
+						return <Card key={uuidv4()}  value={i + 1} sign={1} handleAddToSideDeck={handleAddToSideDeck}/>
 					})
 				}
 				{
 					[...Array(6)].map((x, i) => {
-						return <Card key={i+1} value={i + 1} sign={2} special={1} handleAddToSideDeck={handleAddToSideDeck}/>
+						return <Card key={uuidv4()}  value={i + 1} sign={2} special={1} handleAddToSideDeck={handleAddToSideDeck}/>
 					})
 				}
 			</div>
 			<div className={styles.side}>
 				{sideDeck.map((card, i) => {
-					return <Card key={card.value + i} value={card.value} sign={card.sign} special={card.special}/>
+					return <Card key={uuidv4()}  value={card.value} sign={card.sign} special={card.special}/>
 				})}
 			</div>
 			<div className={styles.parent}>
