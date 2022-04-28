@@ -45,6 +45,9 @@
 2. Implement economy for player to purchase new cards
 3. Add unique cards
 
+## Bugs
+* BotHand still has unique key pop errror
+
 ### Lessons to follow up on
 ```
 setState(state.concat(item1))
