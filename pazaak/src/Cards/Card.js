@@ -48,8 +48,8 @@ function Card({key, card}) {
         },
     }
     
-    return (
-        <div style={styles[card.style]} onClick={() => {card.handler(card.sign, card.value, card.special)}}>
+    return ( // pass card object into handler, refactor all handlers to expect card obj
+        <div style={styles[card.style]} onClick={() => {card.handler(card)}}>
             {signReference[card.sign]} {card.value}
         </div>
     )

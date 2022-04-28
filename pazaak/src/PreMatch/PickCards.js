@@ -10,43 +10,17 @@ const PickCards = ({ hand, setHand }) => {
 	}
 
 	const handleSetHand = () => {
-		/* 
-		TODO: refactor all of this, need to store initial sideDeck without having to convert from arr to obj
-		*/
-		if (sideDeck.length !== 10) {
-			window.alert('Please Choose 10 cards')
-			return;
-		}
-		const cardsObject = {};
-		for (let x = 0; x < sideDeck.length; x += 1) {
-			cardsObject[x] = sideDeck[x]
-		}
-		const tempHand = []
-		for (let i = 0; i < 4; i += 1) {
-			const random = getRandomInt(10);
-			if (cardsObject[random]) {
-				tempHand.push(cardsObject[random]);
-				cardsObject[random] = false;
-			} else {
-				i -= 1;
-			}
-		}
-		setHand(hand.concat(tempHand))
+		setHand(hand.concat(sideDeck))
 	}
 
-	const handleAddToSideDeck = (sign, value, special) => {
+	const handleAddToSideDeck = (card) => {
 		if (sideDeck.length === 10) {
 			window.alert('You can only have 10 cards in your side deck')
 			return
 		}
-
-		const cardToAdd = {
-			sign: sign,
-			value: value,
-			special: special
-		}
-		setSideDeck(sideDeck.concat(cardToAdd))
+		setSideDeck(sideDeck.concat(card))
 	}
+
 	const handleClearCards = () => {
 		setSideDeck([])
 	}
@@ -55,7 +29,6 @@ const PickCards = ({ hand, setHand }) => {
 	return (
 		<div className={styles.parent}>
 			<div className={styles.main}>
-				{/* render the main deck here */}
 				{
 					[...Array(6)].map((x, i) => {
 						const card = {
@@ -95,8 +68,8 @@ const PickCards = ({ hand, setHand }) => {
 				}
 			</div>
 			<div className={styles.side}>
-				{sideDeck.map((card, i) => {
-					return <Card key={card.key}  card={card}/>
+				{sideDeck.map((card) => {
+					return <Card key={card.key} card={card}/>
 				})}
 			</div>
 			<div className={styles.parent}>
