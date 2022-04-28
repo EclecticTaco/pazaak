@@ -57,23 +57,23 @@ const PickCards = ({ hand, setHand }) => {
 				{/* render the main deck here */}
 				{
 					[...Array(6)].map((x, i) => {
-						return <Card value={i + 1} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
+						return <Card key={i+1} value={i + 1} sign={0} handleAddToSideDeck={handleAddToSideDeck} />
 					})
 				}
 				{
 					[...Array(6)].map((x, i) => {
-						return <Card value={i + 1} sign={1} handleAddToSideDeck={handleAddToSideDeck}/>
+						return <Card key={i+1} value={i + 1} sign={1} handleAddToSideDeck={handleAddToSideDeck}/>
 					})
 				}
 				{
 					[...Array(6)].map((x, i) => {
-						return <Card value={i + 1} sign={2} special={1} handleAddToSideDeck={handleAddToSideDeck}/>
+						return <Card key={i+1} value={i + 1} sign={2} special={1} handleAddToSideDeck={handleAddToSideDeck}/>
 					})
 				}
 			</div>
 			<div className={styles.side}>
-				{sideDeck.map((card) => {
-					return <Card value={card.value} sign={card.sign} special={card.special}/>
+				{sideDeck.map((card, i) => {
+					return <Card key={card.value + i} value={card.value} sign={card.sign} special={card.special}/>
 				})}
 			</div>
 			<div className={styles.parent}>
