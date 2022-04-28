@@ -15,9 +15,7 @@ const PlayerHand = ({hand, handler}) => {
             {
                 hand.map((card) => {
                     return (
-                        <div>
-                            <Card card={card} handler={handler}/>
-                        </div> 
+                        <Card key={card.key} card={card} handler={handler}/>
                     )
                 })
             }

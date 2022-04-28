@@ -7,7 +7,7 @@ const PlayerBoard = ( {board} ) => {
     return (
         <div className={styles.board}>
             {board.map((card) => {
-                return <Card card={card}/> 
+                return <Card key={card.key} card={card}/> 
             })}
         </div>
     )
