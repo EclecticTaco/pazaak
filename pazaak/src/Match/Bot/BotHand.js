@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Card from '../../Cards/Card'
 import styles from './BotHand.module.css'
 
-const BotHand = ({hand, handlePlayCard}) => { // replace handler to only play cards to bot's board
+const BotHand = ({hand, handlePlayCard}) => {
     return (
         <div className={styles.botHand}>
             {
