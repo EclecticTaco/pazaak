@@ -36,6 +36,7 @@
 * ~~Seperate and group Bot vs Player components~~ 
 * Combine BotHand and PlayerHand components
 * Refacor the handlePlayCard func
+* Only pass the card object to card components
 
 
 ## Stretch Goals
@@ -55,3 +56,5 @@ setState( state => state.concat(item1))
 inside 2 function calls later:
     setState( state => state.concat(item2)) <--- will have both item1 and item2
 ```
+^
+https://stackoverflow.com/questions/42038590/when-to-use-react-setstate-callback
