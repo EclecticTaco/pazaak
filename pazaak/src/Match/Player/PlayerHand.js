@@ -13,10 +13,10 @@ const PlayerHand = ({hand, handlePlayCard}) => {
     return (
         <div className={styles.playerHand}>
             {
-                hand.map((card) => {
+                hand.map((card,i) => {
                     return (
                         <div>
-                            <Card match={true} sign={card.sign} value={card.value} special={card.special} handlePlayCard={handlePlayCard} card={card}/>
+                            <Card key={card.value + i + card.sign} match={true} sign={card.sign} value={card.value} special={card.special} handlePlayCard={handlePlayCard} card={card}/>
                         </div> 
                     )
                 })
