@@ -47,7 +47,12 @@ function Card({card, handler}) {
             padding: '5px'
         },
     }
-    
+    if (card.stle = 'isBotHand') {
+        return (
+            <div style={styles[card.style]} onClick={ handler ? () => {handler(card)} : () => {card.handler(card)}}>
+            </div>
+        )
+    }
     return ( // pass card object into handler, refactor all handlers to expect card obj
         <div style={styles[card.style]} onClick={ handler ? () => {handler(card)} : () => {card.handler(card)}}>
             {signReference[card.sign]} {card.value}

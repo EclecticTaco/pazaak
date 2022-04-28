@@ -38,7 +38,7 @@
 * ~~ Refacor the handlePlayCard func~~ 
 * Only pass the card object to card components
 * ~~ Generate UUID when creating cards, not when mapping when picking cards for player's hand~~ 
-
+* Refactor Card to better handle bot cards
 
 ## Stretch Goals
 1. Limited pool of initial starting cards

@@ -52,7 +52,8 @@ const Match = ( {playerHand }) => {
                 sign: getRandomInt(0,3),
                 value: getRandomInt(1,7),
                 match: true,
-                key:uuidv4()
+                key:uuidv4(),
+                style:'isBotHand'
             }
             temp.push(card)
         }
