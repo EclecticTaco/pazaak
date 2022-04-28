@@ -1,4 +1,4 @@
-function Card({card}) {
+function Card({card, handler}) {
     const signReference = {
         0: '-',
         1: '+',
@@ -49,7 +49,7 @@ function Card({card}) {
     }
     
     return ( // pass card object into handler, refactor all handlers to expect card obj
-        <div style={styles[card.style]} onClick={() => {card.handler(card)}}>
+        <div style={styles[card.style]} onClick={ handler ? () => {handler(card)} : () => {card.handler(card)}}>
             {signReference[card.sign]} {card.value}
         </div>
     )

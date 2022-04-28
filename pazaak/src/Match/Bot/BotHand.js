@@ -9,7 +9,7 @@ const BotHand = ({hand, handlePlayCard}) => { // replace handler to only play ca
                 hand.map((card) => {
                     return (
                         <div>
-                            <Card match={true} sign={card.sign} value={card.value} special={card.special} handlePlayCard={handlePlayCard} card={card} botCard={true}/>
+                            <Card card={card}/>
                         </div> 
                     )
                 })

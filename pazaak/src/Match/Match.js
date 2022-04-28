@@ -4,6 +4,8 @@ import PlayerBoard from './Player/PlayerBoard'
 import BotBoard from './Bot/BotBoard';
 import BotHand from './Bot/BotHand';
 import styles from './Match.module.css'
+import { v4 as uuidv4 } from 'uuid';
+
 
 const Match = ( {playerHand }) => { 
     const [hand, setHand] = useState(playerHand);
@@ -30,7 +32,8 @@ const Match = ( {playerHand }) => {
             value: value,
             sign: 1,
             special: true,
-            isHouse: true
+            isHouse: true,
+            key: uuidv4()
         }
         if (player) {
             setBoard(board.concat([card]))
@@ -48,7 +51,8 @@ const Match = ( {playerHand }) => {
             const card = {
                 sign: getRandomInt(0,3),
                 value: getRandomInt(1,7),
-                match: true
+                match: true,
+                key:uuidv4()
             }
             temp.push(card)
         }
@@ -123,30 +127,6 @@ const Match = ( {playerHand }) => {
         }
     }
 
-    /* 
-    if isBotActive
-        accept calls to handleBotTurn
-    else
-        return
-
-    if isPlayerActive is false
-        loop until victory or lost conditons are met
-
-    read the current count
-        if a card in hand can bring total up to 20
-            play card
-            set isBot active to false
-        else 
-            end turn
-        if count is over 20
-             if card can bring count under 20
-                play card
-                    stand if new count is 19 or 20
-            else
-                end turn
-        
-
-    */
     const handleBotTurn = () => {
         if (!isBotActive) return
         generateHouseCard(false);
@@ -167,10 +147,10 @@ const Match = ( {playerHand }) => {
         })
 
         let repeat = 1;
+        let botStop = false;
         while (repeat < 1) {
 
             // if bot loses or wins a round, set botstop to true
-            let botStop = false  
             if (!botStop) {
                 // bot has either stood, end turn, or played a card
             } else {
@@ -225,7 +205,7 @@ const Match = ( {playerHand }) => {
                         <PlayerBoard board={board} />
                     </div>
                     <div className={styles.inner}>
-                        <PlayerHand hand={hand} handlePlayCard={handlePlayCard} />
+                        <PlayerHand hand={hand} handler={handlePlayCard} />
                     </div>
                 </div>
 
@@ -234,7 +214,7 @@ const Match = ( {playerHand }) => {
                         <BotBoard board={botBoard} />
                     </div>
                     <div className={styles.inner}>
-                        <BotHand hand={botHand} handlePlayCard={handlePlayCard} />
+                        <BotHand hand={botHand} handler={handlePlayCard} />
                         {/*replace handler to only play cards to bot's board */}
                     </div>
                 </div>
