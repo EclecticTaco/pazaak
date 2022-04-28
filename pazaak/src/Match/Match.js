@@ -32,7 +32,7 @@ const Match = ( {playerHand }) => {
             value: value,
             sign: 1,
             special: true,
-            isHouse: true,
+            style: 'isHouse',
             key: uuidv4()
         }
         if (player) {
