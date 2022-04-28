@@ -9,9 +9,32 @@ const PickCards = ({ hand, setHand }) => {
 		return Math.floor(Math.random() * max);
 	}
 
-	const handleSetHand = () => {
-		setHand(hand.concat(sideDeck))
+	function getRandom(arr, n) {
+		// src: https://stackoverflow.com/questions/19269545/how-to-get-a-number-of-random-elements-from-an-array
+		var result = new Array(n),
+			len = arr.length,
+			taken = new Array(len);
+		if (n > len)
+			throw new RangeError("getRandom: more elements taken than available");
+		while (n--) {
+			var x = Math.floor(Math.random() * len);
+			result[n] = arr[x in taken ? taken[x] : x];
+			taken[x] = --len in taken ? taken[len] : len;
+		}
+		return result;
 	}
+	
+
+	const handleSetHand = () => {
+		if (sideDeck.length !== 10) {
+			window.alert('Please Choose 10 cards')
+			return;
+		}
+		const copy = sideDeck.map(card => ({...card}))
+		setHand(hand.concat(getRandom(copy, 4)))
+	}
+
+	
 
 	const handleAddToSideDeck = (card) => {
 		if (sideDeck.length === 10) {
