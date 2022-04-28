@@ -53,7 +53,7 @@ function Card({card, handler}) {
             </div>
         )
     }
-    return ( // pass card object into handler, refactor all handlers to expect card obj
+    return ( 
         <div style={styles[card.style]} onClick={ handler ? () => {handler(card)} : () => {card.handler(card)}}>
             {signReference[card.sign]} {card.value}
         </div>
