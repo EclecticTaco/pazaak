@@ -39,6 +39,7 @@
 * Only pass the card object to card components
 * ~~ Generate UUID when creating cards, not when mapping when picking cards for player's hand~~ 
 * Refactor Card to better handle bot cards
+* Initial cards on pick cards have duplicate keys on re-render
 
 ## Stretch Goals
 1. Limited pool of initial starting cards
