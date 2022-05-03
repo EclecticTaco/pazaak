@@ -39,8 +39,8 @@ const Match = ( {playerHand }) => {
             setBoard(board.concat([card]))
             setCount(count + card.value)
         } else {
-            setBotBoard((botBoard) => botBoard.concat(card))
-            setBotCount((count) => count + card.value)
+            setBotBoard(botBoard.concat(card))
+            setBotCount((botCount + card.value))
         }
         return card
     }
@@ -216,7 +216,7 @@ const Match = ( {playerHand }) => {
                     </div>
                     <div className={styles.inner}>
                         <BotHand hand={botHand} handler={handlePlayCard} />
-                        {/*replace handler to only play cards to bot's board */}
+                        <div>Bot Count is {botCount}</div>
                     </div>
                 </div>
 
