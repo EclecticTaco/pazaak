@@ -110,21 +110,15 @@ const Match = ( {playerHand }) => {
 
     const handleBotPlayCard = (card,board,hand,count) => {
         console.log('bot played this card with a value of: ', card.value)
-        setBotBoard(botBoard => botBoard.concat([card]));
         let idx = 0;
         hand.forEach((handCard, i) => {
             if ((handCard.value && handCard.sign == card.value && card.sign)) {
                 idx = i;
                 return
-            }
+            }// update state here
         })
         hand.splice(idx, 1)
-        setBotHand(handCopy)
-        if (card.sign > 0) {
-            setBotCount((botCount)  => botCount + card.value)
-        } else {
-            setBotCount((botCount) => botCount - card.value)
-        }
+
     }
 
 
@@ -134,8 +128,8 @@ const Match = ( {playerHand }) => {
         const nextState = { ...state };
         generateBotCard(nextState); // This mutates nextState in place and doesn't call setState
         if (nextState.botCount == 19, ...) {
-            nextState.isBotActive = ...;
-        }
+            nextState.isBotActive = ...;// update state here
+        }console.log('player is not active')
         // ...
         setState(nextState);
 
@@ -174,25 +168,41 @@ const Match = ( {playerHand }) => {
                 return
             }
             
-            hand.forEach((card) => {
-                
+            hand.forEach((card, i) => {
+                if ( ( ((card.value + count) === (19 || 20) ) && card.sign === 1 ) || ( ((count - card.value) === (19 || 20) ) && card.sign === 0 ) ) {
+                    hand.splice(i,1);
+                    board.concat(card);
+                    if (card.sign == 1) {
+                        count += card.value
+                    } else {
+                        count -= card.value;
+                    }
+                    isBotTurn = false;
+                    return
+                }
             })
             const newState = {
                 hand: hand,
                 count: count,
                 board: board
             }
+            setBotHand(botHand.concat(newState.hand));
+            setBotBoard(botBoard.concat(newState.board));
+            setBotCount(botCount =>  count)
             if (!playerActive && isBotTurn) {
-                console.log('player is not active')
-                setTimeout(() => botTurn(newState), 1000)
+                console.log('player is not active, call bot turn again')
+                setTimeout(() => {
+                    botTurn(newState)
+                }, 1000)
             } 
         }
-        const newState = botTurn({
+
+        botTurn({
             hand: botHandCopy,
             count: botCountCopy,
             board: botBoardCopy
         })
-        // update state here
+        
     }
 
     const handleCompareCounts = () => {
@@ -221,8 +231,9 @@ const Match = ( {playerHand }) => {
 
     useEffect(() => {
         generateHouseCard(true);
-        generateHouseCard(false);
+        const botHouseCard = generateHouseCard(false);
         generateBotHand();
+        setBotBoard(botBoard.concat(botHouseCard))
     }, [])
 
     useEffect(() => {
