@@ -144,15 +144,22 @@ const Match = ( {playerHand }) => {
         const botHandCopy = Array.from(botHand);
         const botCountCopy = botCount;
         const botBoardCopy = Array.from(botBoard);
-        const isBotTurn = true;
+        let isBotTurn = true;
 
         if (!isBotActive) {
             console.log('bot is not active')
             return
         };
-
+        // card is played but displays as house card, check CSS
+        // bot hand is duplicated when player stands
         const botTurn = ({hand,count,board}) => {
-            if (count > 20) return;
+            console.log(
+                'state of bot turn params',
+                hand, '\n',
+                count, '\n',
+                board, '\n',
+            )
+            if (count > 20 || !isBotTurn) return;
             const newCard = generateHouseCard(false); 
             if (newCard.sign == 1) {
                 count += newCard.value
@@ -165,9 +172,12 @@ const Match = ( {playerHand }) => {
 
             if (count == 19 || count == 20) {
                 setisBotActive(prev => !prev);
+                setBoard(botBoard.concat(newCard))
+                isBotTurn = false;
                 return
             }
-            
+
+            if (!isBotTurn) return
             hand.forEach((card, i) => {
                 if ( ( ((card.value + count) === (19 || 20) ) && card.sign === 1 ) || ( ((count - card.value) === (19 || 20) ) && card.sign === 0 ) ) {
                     hand.splice(i,1);
