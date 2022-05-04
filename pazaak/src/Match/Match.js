@@ -188,12 +188,12 @@ const Match = ( {playerHand }) => {
             }
             setBotHand(botHand.concat(newState.hand));
             setBotBoard(botBoard.concat(newState.board));
-            setBotCount(botCount =>  count)
+            setBotCount(botCount =>  botCount + count)
             if (!playerActive && isBotTurn) {
                 console.log('player is not active, call bot turn again')
                 setTimeout(() => {
                     botTurn(newState)
-                }, 1000)
+                }, 2000)
             } 
         }
 
@@ -234,6 +234,7 @@ const Match = ( {playerHand }) => {
         const botHouseCard = generateHouseCard(false);
         generateBotHand();
         setBotBoard(botBoard.concat(botHouseCard))
+        setBotCount(botCount + botHouseCard.value)
     }, [])
 
     useEffect(() => {
