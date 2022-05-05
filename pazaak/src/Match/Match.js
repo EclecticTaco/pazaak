@@ -172,7 +172,7 @@ const Match = ( {playerHand }) => {
 
             if (count == 19 || count == 20) {
                 setisBotActive(prev => !prev);
-                setBotCount(botCount + count)
+                setBotCount(botCount => count)
                 setBotBoard(botBoard.concat(newCard))
                 isBotTurn = false;
                 return
@@ -199,9 +199,10 @@ const Match = ( {playerHand }) => {
                 count: count,
                 board: board
             }
+            // weird behavior when annon func 
             setBotHand((botHand) => newState.hand);
-            setBotBoard(botBoard.concat(newState.board));
-            setBotCount(botCount + count)
+            setBotBoard((botBoard) => newState.board);
+            setBotCount(botCount => count)
             if (!playerActive && isBotTurn) {
                 console.log('player is not active, call bot turn again')
                 setTimeout(() => {
