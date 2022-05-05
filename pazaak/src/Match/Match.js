@@ -199,7 +199,7 @@ const Match = ( {playerHand }) => {
                 count: count,
                 board: board
             }
-            setBotHand(botHand.concat(newState.hand));
+            setBotHand((botHand) => newState.hand);
             setBotBoard(botBoard.concat(newState.board));
             setBotCount(botCount + count)
             if (!playerActive && isBotTurn) {
