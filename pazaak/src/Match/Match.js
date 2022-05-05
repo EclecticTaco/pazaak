@@ -167,12 +167,13 @@ const Match = ( {playerHand }) => {
                 count -= newCard.value
             }
             board.push(newCard)
-
+            console.log('bot board is: ', board)
 
 
             if (count == 19 || count == 20) {
                 setisBotActive(prev => !prev);
-                setBoard(botBoard.concat(newCard))
+                setBotCount(botCount + count)
+                setBotBoard(botBoard.concat(newCard))
                 isBotTurn = false;
                 return
             }
@@ -182,11 +183,13 @@ const Match = ( {playerHand }) => {
                 if ( ( ((card.value + count) === (19 || 20) ) && card.sign === 1 ) || ( ((count - card.value) === (19 || 20) ) && card.sign === 0 ) ) {
                     hand.splice(i,1);
                     board.concat(card);
+                    setBotBoard(botBoard.concat(board));
                     if (card.sign == 1) {
                         count += card.value
                     } else {
                         count -= card.value;
                     }
+                    setBotCount(botCount + count)
                     isBotTurn = false;
                     return
                 }
@@ -198,7 +201,7 @@ const Match = ( {playerHand }) => {
             }
             setBotHand(botHand.concat(newState.hand));
             setBotBoard(botBoard.concat(newState.board));
-            setBotCount(botCount =>  botCount + count)
+            setBotCount(botCount + count)
             if (!playerActive && isBotTurn) {
                 console.log('player is not active, call bot turn again')
                 setTimeout(() => {
