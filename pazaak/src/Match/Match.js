@@ -159,7 +159,10 @@ const Match = ( {playerHand }) => {
                 count, '\n',
                 board, '\n',
             )
-            if (count > 20 || !isBotTurn) return;
+            if (count > 20 || !isBotTurn) {
+                isBotTurn = false;
+                return
+            };
             const newCard = generateHouseCard(false); 
             if (newCard.sign == 1) {
                 count += newCard.value
@@ -183,13 +186,13 @@ const Match = ( {playerHand }) => {
                 if ( ( ((card.value + count) === (19 || 20) ) && card.sign === 1 ) || ( ((count - card.value) === (19 || 20) ) && card.sign === 0 ) ) {
                     hand.splice(i,1);
                     board.concat(card);
-                    setBotBoard(botBoard.concat(board));
+                    setBotBoard(botBoard => board);
                     if (card.sign == 1) {
                         count += card.value
                     } else {
                         count -= card.value;
                     }
-                    setBotCount(botCount + count)
+                    setBotCount(botCount => count)
                     isBotTurn = false;
                     return
                 }
@@ -199,7 +202,7 @@ const Match = ( {playerHand }) => {
                 count: count,
                 board: board
             }
-            // weird behavior when annon func 
+            // board cards vanish at the end of bots turn, CSS related?
             setBotHand((botHand) => newState.hand);
             setBotBoard((botBoard) => newState.board);
             setBotCount(botCount => count)
