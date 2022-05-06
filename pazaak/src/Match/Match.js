@@ -184,8 +184,13 @@ const Match = ( {playerHand }) => {
             if (!isBotTurn) return
             hand.forEach((card, i) => {
                 if ( ( ((card.value + count) === (19 || 20) ) && card.sign === 1 ) || ( ((count - card.value) === (19 || 20) ) && card.sign === 0 ) ) {
-                    hand.splice(i,1);
+                    if (card.sign === 1) {
+                        card.style = 'isPositve'
+                    } else {
+                        card.style = 'isNegative'
+                    }
                     board.concat(card);
+                    hand.splice(i,1);
                     if (card.sign == 1) {
                         count += card.value
                     } else {
