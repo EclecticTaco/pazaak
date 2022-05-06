@@ -186,13 +186,11 @@ const Match = ( {playerHand }) => {
                 if ( ( ((card.value + count) === (19 || 20) ) && card.sign === 1 ) || ( ((count - card.value) === (19 || 20) ) && card.sign === 0 ) ) {
                     hand.splice(i,1);
                     board.concat(card);
-                    setBotBoard(botBoard => board);
                     if (card.sign == 1) {
                         count += card.value
                     } else {
                         count -= card.value;
                     }
-                    setBotCount(botCount => count)
                     isBotTurn = false;
                     return
                 }
