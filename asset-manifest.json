@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/pazaak/static/css/main.80234dfc.css",
-    "main.js": "/pazaak/static/js/main.bfbe570b.js",
+    "main.css": "/pazaak/static/css/main.1fcd55a0.css",
+    "main.js": "/pazaak/static/js/main.bc89081d.js",
     "index.html": "/pazaak/index.html",
-    "main.80234dfc.css.map": "/pazaak/static/css/main.80234dfc.css.map",
-    "main.bfbe570b.js.map": "/pazaak/static/js/main.bfbe570b.js.map"
+    "main.1fcd55a0.css.map": "/pazaak/static/css/main.1fcd55a0.css.map",
+    "main.bc89081d.js.map": "/pazaak/static/js/main.bc89081d.js.map"
   },
   "entrypoints": [
-    "static/css/main.80234dfc.css",
-    "static/js/main.bfbe570b.js"
+    "static/css/main.1fcd55a0.css",
+    "static/js/main.bc89081d.js"
   ]
 }
