@@ -164,11 +164,7 @@ const Match = ( {playerHand }) => {
                 return
             };
             const newCard = generateHouseCard(false); 
-            if (newCard.sign == 1) {
-                count += newCard.value
-            } else {
-                count -= newCard.value
-            }
+            count += newCard.value;
             board.push(newCard)
             console.log('bot board is: ', board)
 
@@ -182,21 +178,24 @@ const Match = ( {playerHand }) => {
             }
 
             if (!isBotTurn) return
+            let idx = 0;
+
             hand.forEach((card, i) => {
                 if ( ( ((card.value + count) === (19 || 20) ) && card.sign === 1 ) || ( ((count - card.value) === (19 || 20) ) && card.sign === 0 ) ) {
                     if (card.sign === 1) {
-                        card.style = 'isPositve'
+                        card.style = 'isPositive'
                     } else {
                         card.style = 'isNegative'
                     }
-                    board.concat(card);
-                    hand.splice(i,1);
+                    idx = i;
                     if (card.sign == 1) {
                         count += card.value
                     } else {
                         count -= card.value;
                     }
                     isBotTurn = false;
+                    board.push(card);
+                    hand.splice(idx,1);
                     return
                 }
             })
