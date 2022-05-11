@@ -59,25 +59,9 @@ const Match = ( {playerHand }) => {
         setBotHand(botHand.concat(temp))
     }
 
-    const checkCount = () => {
-        if (count > 20) {
-            return false 
-        } else if (count === 20) {
-            return "win"
-        }   
-        return true
-    }
-
     const handleEndTurn = () => {
-        /* 
-        if count is over 20 
-            set player or bot in inactive 
-            other player wins the round
-        */
-
         generateHouseCard(true)
         setTimeout(handleBotTurn, 1000)
-        // call func for CPU turn
     }
 
     const handleStand = () => {
@@ -104,7 +88,7 @@ const Match = ( {playerHand }) => {
         }
     }
 
-    const handleBotTurn = (playerActive) => {
+    const handleBotTurn = () => {
         const botHandCopy = Array.from(botHand);
         const botCountCopy = botCount;
         const botBoardCopy = Array.from(botBoard);
