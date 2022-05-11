@@ -16,6 +16,7 @@
     * Lock the player from inputs when they are not active
         * Insert isActive boolean to all user inputs
         * If player stands/ending turn when count > 20/counti s 20: set player in !isActive
+    * Game ends when one player wins 3 rounds
 3.  Play Again
     * Player can chose to play again
     * Reset all state
