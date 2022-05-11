@@ -77,6 +77,7 @@ const Match = ( {playerHand }) => {
         */
 
         generateHouseCard(true)
+        setTimeout(handleBotTurn, 1000)
         // call func for CPU turn
     }
 
@@ -139,8 +140,6 @@ const Match = ( {playerHand }) => {
     }
      */
     const handleBotTurn = (playerActive) => {
-        console.log('handleBotTurn Call')
-        console.log('players state ', isPlayerActive)
         const botHandCopy = Array.from(botHand);
         const botCountCopy = botCount;
         const botBoardCopy = Array.from(botBoard);
@@ -209,7 +208,7 @@ const Match = ( {playerHand }) => {
             setBotHand((botHand) => newState.hand);
             setBotBoard((botBoard) => newState.board);
             setBotCount(botCount => count)
-            if (!playerActive && isBotTurn) {
+            if (!isPlayerActive && isBotTurn) {
                 console.log('player is not active, call bot turn again')
                 setTimeout(() => {
                     botTurn(newState)
