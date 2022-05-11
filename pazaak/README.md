@@ -9,9 +9,10 @@
     * ~~Game draws 4 from side deck into players hand~~
     * ~~Player can end turn (draws a house card)~~
     * ~~Player can stand (no further action)~~
-    * Player can play card from hand (1 per turn)
+    * ~~Player can play card from hand (1 per turn)~~
     * Player can flip plus/minus card's sign
-    * Player can stand or end turn after playing a card
+    * ~~Player can stand or end turn after playing a card~~
+    * When both both and player are done with their play, compare counts and determine winner 
     * Lock the player from inputs when they are not active
         * Insert isActive boolean to all user inputs
         * If player stands/ending turn when count > 20/counti s 20: set player in !isActive
@@ -19,12 +20,12 @@
     * Player can chose to play again
     * Reset all state
 4. Implement CPU Player
-    * Implement a board that reflects CPU state
+    * ~~Implement a board that reflects CPU state~~
     * ~~Generate random hand for CPU~~
-    * CPU stands if 19 and no cards in hand to increase to 20
-    * CPU will always play card to increase card to 20
-    * Otherwise, keep recieving house cards
-    * If count is over 20, play minus card if avail
+    * ~~CPU stands if 19 and no cards in hand to increase to 20~~
+    * ~~CPU will always play card to increase card to 20~~
+    * ~~Otherwise, keep recieving house cards~~
+    * ~~If count is over 20, play minus card if avail~~
 
 ## Need to Refactor
 * ~~Refactor Card and PickCards to dynamically render instead of hardcoding and repeating~~
