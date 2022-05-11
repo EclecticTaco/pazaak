@@ -204,6 +204,7 @@ const Match = ( {playerHand }) => {
                 count: count,
                 board: board
             }
+            if (!isBotActive) return;
             // board cards vanish at the end of bots turn, CSS related?
             setBotHand((botHand) => newState.hand);
             setBotBoard((botBoard) => newState.board);
