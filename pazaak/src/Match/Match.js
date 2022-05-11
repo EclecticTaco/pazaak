@@ -111,7 +111,7 @@ const Match = ( {playerHand }) => {
             if (count == 19 || count == 20) {
                 setisBotActive(prev => !prev);
                 setBotCount(botCount => count)
-                setBotBoard(botBoard.concat(newCard))
+                setBotBoard((botBoard) => board)
                 isBotTurn = false;
                 return
             }
@@ -133,9 +133,12 @@ const Match = ( {playerHand }) => {
                         count -= card.value;
                     }
                     isBotTurn = false;
-                    setisBotActive(prev => !prev);
                     board.push(card);
                     hand.splice(idx,1);
+                    setisBotActive(prev => !prev);
+                    setBotHand((botHand) => newState.hand);
+                    setBotBoard((botBoard) => newState.board);
+                    setBotCount(botCount => count)
                     return
                 }
             })
@@ -144,7 +147,7 @@ const Match = ( {playerHand }) => {
                 count: count,
                 board: board
             }
-            if (!isBotActive) return;
+            if (!isBotTurn) return;
 
             setBotHand((botHand) => newState.hand);
             setBotBoard((botBoard) => newState.board);
