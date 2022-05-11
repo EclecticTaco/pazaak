@@ -40,7 +40,6 @@ const Match = ( {playerHand }) => {
             setCount(count + card.value)
             return
         } else {
-            console.log('generating house card for bot with value of: ', card.value)
             return card
         }
     }
@@ -103,42 +102,8 @@ const Match = ( {playerHand }) => {
         } else {
             setCount(count - card.value)
         }
-        /* 
-            player should be able to chose to stand after playing a card
-            player should not be able to click and play more cards to board
-        */
     }
 
-    const handleBotPlayCard = (card,board,hand,count) => {
-        console.log('bot played this card with a value of: ', card.value)
-        let idx = 0;
-        hand.forEach((handCard, i) => {
-            if ((handCard.value && handCard.sign == card.value && card.sign)) {
-                idx = i;
-                return
-            }// update state here
-        })
-        hand.splice(idx, 1)
-
-    }
-
-
-    
-/*     
-    handleBotTurn() {
-        const nextState = { ...state };
-        generateBotCard(nextState); // This mutates nextState in place and doesn't call setState
-        if (nextState.botCount == 19, ...) {
-            nextState.isBotActive = ...;// update state here
-        }console.log('player is not active')
-        // ...
-        setState(nextState);
-
-        if (isBotTurn) {
-            setTimeout(handleBotTurn, 1000);
-        }
-    }
-     */
     const handleBotTurn = (playerActive) => {
         const botHandCopy = Array.from(botHand);
         const botCountCopy = botCount;
@@ -146,18 +111,10 @@ const Match = ( {playerHand }) => {
         let isBotTurn = true;
 
         if (!isBotActive) {
-            console.log('bot is not active')
             return
         };
-        // card is played but displays as house card, check CSS
-        // bot hand is duplicated when player stands
+
         const botTurn = ({hand,count,board}) => {
-            console.log(
-                'state of bot turn params',
-                hand, '\n',
-                count, '\n',
-                board, '\n',
-            )
             if (count > 20 || !isBotTurn) {
                 isBotTurn = false;
                 return
@@ -165,8 +122,6 @@ const Match = ( {playerHand }) => {
             const newCard = generateHouseCard(false); 
             count += newCard.value;
             board.push(newCard)
-            console.log('bot board is: ', board)
-
 
             if (count == 19 || count == 20) {
                 setisBotActive(prev => !prev);
@@ -193,6 +148,7 @@ const Match = ( {playerHand }) => {
                         count -= card.value;
                     }
                     isBotTurn = false;
+                    setisBotActive(prev => !prev);
                     board.push(card);
                     hand.splice(idx,1);
                     return
@@ -204,12 +160,11 @@ const Match = ( {playerHand }) => {
                 board: board
             }
             if (!isBotActive) return;
-            // board cards vanish at the end of bots turn, CSS related?
+
             setBotHand((botHand) => newState.hand);
             setBotBoard((botBoard) => newState.board);
             setBotCount(botCount => count)
             if (!isPlayerActive && isBotTurn) {
-                console.log('player is not active, call bot turn again')
                 setTimeout(() => {
                     botTurn(newState)
                 }, 2000)
