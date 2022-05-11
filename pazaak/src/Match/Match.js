@@ -88,7 +88,7 @@ const Match = ( {playerHand }) => {
         }
     }
 
-    const handleBotTurn = () => {
+    const handleBotTurn = (playerActive) => {
         const botHandCopy = Array.from(botHand);
         const botCountCopy = botCount;
         const botBoardCopy = Array.from(botBoard);
@@ -100,6 +100,7 @@ const Match = ( {playerHand }) => {
 
         const botTurn = ({hand,count,board}) => {
             if (count > 20 || !isBotTurn) {
+                setisBotActive(prev => !prev);
                 isBotTurn = false;
                 return
             };
@@ -148,7 +149,7 @@ const Match = ( {playerHand }) => {
             setBotHand((botHand) => newState.hand);
             setBotBoard((botBoard) => newState.board);
             setBotCount(botCount => count)
-            if (!isPlayerActive && isBotTurn) {
+            if (!playerActive && isBotTurn) {
                 setTimeout(() => {
                     botTurn(newState)
                 }, 2000)
