@@ -23,6 +23,6 @@
     If you hit 20 either on a house card draw or from playing a card from your hand:
         you win the round unless your opnent can reach 20 aswell.    
     If you recieve a house card that puts you over 20, you have to play a card to bring it below or to 20 in that turn. 
-        ff you are unable to, you bust out and lose the current round.
+        If you are unable to, you bust out and lose the current round.
 
 [Link to Rules](https://starwars.fandom.com/wiki/Pazaak/Legends)
