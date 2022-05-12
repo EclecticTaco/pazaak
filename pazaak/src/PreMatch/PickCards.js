@@ -10,7 +10,6 @@ const PickCards = ({ hand, setHand }) => {
 	}
 
 	function getRandom(arr, n) {
-		// src: https://stackoverflow.com/questions/19269545/how-to-get-a-number-of-random-elements-from-an-array
 		let result = new Array(n),
 			len = arr.length,
 			taken = new Array(len);
