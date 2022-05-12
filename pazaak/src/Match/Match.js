@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Match = ( {playerHand }) => { 
     const [hand, setHand] = useState(playerHand);
-    const [count, setCount] = useState(0);
+    const [playerCount, setPlayerCount] = useState(0);
     const [board, setBoard] = useState([]);
 
     const [isPlayerActive, setisPlayerActive] = useState(true);
@@ -40,7 +40,7 @@ const Match = ( {playerHand }) => {
         }
         if (player) {
             setBoard(board.concat(card))
-            setCount(count + card.value)
+            setPlayerCount(playerCount + card.value)
             return
         } else {
             return card
@@ -63,8 +63,12 @@ const Match = ( {playerHand }) => {
     }
 
     const handleEndTurn = () => {
+        if (playerCount > 20) {
+            setisPlayerActive((prev) => !prev)
+            return;
+        }
         generateHouseCard(true)
-        setTimeout(handleBotTurn, 1000)
+        setTimeout(() => {handleBotTurn(true)}, 1000)
     }
 
     const handleStand = () => {
@@ -85,9 +89,9 @@ const Match = ( {playerHand }) => {
         setHand(handCopy)
 
         if (card.sign > 0) {
-            setCount(count + card.value)
+            setPlayerCount(playerCount + card.value)
         } else {
-            setCount(count - card.value)
+            setPlayerCount(playerCount - card.value)
         }
     }
 
@@ -103,7 +107,6 @@ const Match = ( {playerHand }) => {
 
         const botTurn = ({hand,count,board}) => {
             if (count > 20 || !isBotTurn) {
-                setisBotActive(prev => !prev);
                 isBotTurn = false;
                 return
             };
@@ -135,6 +138,7 @@ const Match = ( {playerHand }) => {
                     isBotTurn = false;
                     board.push(card);
                     hand.splice(idx,1);
+                    setisBotActive(prev => !prev);
                     return
                 }
             })
@@ -168,6 +172,8 @@ const Match = ( {playerHand }) => {
         if player is active and count is over 20 on a stand or end turn
             player loses round
             increment rounds won on bot
+
+        
         if bot is active and count is over 20 on a stand or end turn
             bot loses round
             increment rounds won on player 
@@ -177,8 +183,10 @@ const Match = ( {playerHand }) => {
             if tie
                 replay round
         */
-        
-        // call this when both players either stand, end on a 20, or bust.
+        if (playerCount > 20) {
+            
+        }
+
     }   
 
     useEffect(() => {
@@ -191,11 +199,15 @@ const Match = ( {playerHand }) => {
 
     useEffect(() => {
         const results = handleCompareCounts();
-        if (results) {
+        if (results) { // if results is a win
             window.alert(results)
             // increment rounds won of winner
             // reset both player's boards, keep their current hands
         }
+        /* 
+        if tie
+            reset both boards
+        */
     })  
 
     return (
@@ -203,7 +215,7 @@ const Match = ( {playerHand }) => {
             <div className={styles.root}>
 
                 <div className={styles.main}>
-                    <div> Your Score Is {count}</div> 
+                    <div> Your Score Is {playerCount}</div> 
                     <div className={styles.inner}>
                         <PlayerBoard board={board} />
                     </div>
