@@ -18,6 +18,9 @@ const Match = ( {playerHand }) => {
     const [botHand, setBotHand] = useState([]);
     const [botCount, setBotCount] = useState(0);
     const [botBoard, setBotBoard] = useState([]);
+
+    const [roundsWonPlayer, setRoundsWonPlayer] = useState([]);
+    const [roundsWonBot, setroundsWonBot] = useState([]);
     
     
     function getRandomInt(min, max) {
@@ -123,22 +126,15 @@ const Match = ( {playerHand }) => {
                 if ( ( ((card.value + count) === (19 || 20) ) && card.sign === 1 ) || ( ((count - card.value) === (19 || 20) ) && card.sign === 0 ) ) {
                     if (card.sign === 1) {
                         card.style = 'isPositive'
-                    } else {
-                        card.style = 'isNegative'
-                    }
-                    idx = i;
-                    if (card.sign == 1) {
                         count += card.value
                     } else {
+                        card.style = 'isNegative'
                         count -= card.value;
                     }
+                    idx = i;
                     isBotTurn = false;
                     board.push(card);
                     hand.splice(idx,1);
-                    setisBotActive(prev => !prev);
-                    setBotHand((botHand) => newState.hand);
-                    setBotBoard((botBoard) => newState.board);
-                    setBotCount(botCount => count)
                     return
                 }
             })
@@ -181,13 +177,7 @@ const Match = ( {playerHand }) => {
             if tie
                 replay round
         */
-
-        if (count === 20) {
-            return 'Player has won'
-        }
-        if (botCount === 20) {
-            return 'Bot has won'
-        }
+        
         // call this when both players either stand, end on a 20, or bust.
     }   
 
@@ -201,15 +191,19 @@ const Match = ( {playerHand }) => {
 
     useEffect(() => {
         const results = handleCompareCounts();
-        if (results) window.alert(results)
+        if (results) {
+            window.alert(results)
+            // increment rounds won of winner
+            // reset both player's boards, keep their current hands
+        }
     })  
 
     return (
         <div>
-            <div> {count}</div>
             <div className={styles.root}>
 
                 <div className={styles.main}>
+                    <div> Your Score Is {count}</div> 
                     <div className={styles.inner}>
                         <PlayerBoard board={board} />
                     </div>
@@ -219,12 +213,12 @@ const Match = ( {playerHand }) => {
                 </div>
 
                 <div className={styles.main}>
+                    <div>Opponent Score Is {botCount}</div>
                     <div className={styles.inner}>
                         <BotBoard board={botBoard} />
                     </div>
                     <div className={styles.inner}>
                         <BotHand hand={botHand} handler={handlePlayCard} />
-                        <div>Bot Count is {botCount}</div>
                     </div>
                 </div>
 
